@@ -5,7 +5,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class HelloController {
 
-    @GetMapping
+    @GetMapping("/start")
     public ModelAndView start(){
         return new ModelAndView("start.html");
     }
