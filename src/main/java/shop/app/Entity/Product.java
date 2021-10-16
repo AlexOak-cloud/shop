@@ -1,10 +1,13 @@
 package shop.app.Entity;
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Table(name = "product")
 @Entity
+@EnableJpaRepositories
 public class Product {
 
     @Id
