@@ -1,5 +1,6 @@
 package shop.app.entity;
 
+import lombok.Builder;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
