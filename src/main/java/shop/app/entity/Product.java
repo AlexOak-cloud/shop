@@ -1,4 +1,4 @@
-package shop.app.Entity;
+package shop.app.entity;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
@@ -18,6 +18,10 @@ public class Product {
     private String name;
     @Column(name = "price")
     private int price;
+
+    public static Product action(){
+        return new Product();
+    }
 
     public Product(String name, int price) {
         this.name = name;

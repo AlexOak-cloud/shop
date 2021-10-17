@@ -3,7 +3,7 @@ package shop.app.myControllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-import shop.app.Entity.Product;
+import shop.app.entity.Product;
 
 @Controller
 public class HelloController {
