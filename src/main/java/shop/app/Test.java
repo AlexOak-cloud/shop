@@ -1,17 +1,11 @@
 package shop.app;
 
-import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import shop.app.entity.Product;
+import shop.app.repository.MyRepo;
 
 public class Test {
 
-   
-
-
-    @Bean
-    public static Test action(){
-        return new Test();
-    }
 
 }
