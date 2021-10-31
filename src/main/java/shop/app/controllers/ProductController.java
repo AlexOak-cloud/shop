@@ -3,10 +3,7 @@ package shop.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.app.Repository.ProductRepository;
 import shop.app.entity.Product;
@@ -23,12 +20,7 @@ public class ProductController {
         this.repository = repository;
     }
 
-    @GetMapping("")
-    public ModelAndView mainMenu() {
-        return new ModelAndView("mainMenu.html");
-    }
-
-    @GetMapping("/show")
+    @GetMapping("/")
     public ModelAndView showAll() {
         ModelAndView mav = new ModelAndView("showAll.html");
         final List<Product> all = repository.findAll();
@@ -36,7 +28,7 @@ public class ProductController {
         return mav;
     }
 
-    @GetMapping("/show/{id}")
+    @GetMapping("/{id}")
     public ModelAndView getById(@PathVariable("id") long id) {
         ModelAndView mav = new ModelAndView("getById.html");
         final Product byId = repository.getById(id);
@@ -52,8 +44,28 @@ public class ProductController {
 
     @PostMapping("/add")
     public String addPost(Product product) {
-      repository.save(product);
-      return "redirect:/show";
+        repository.save(product);
+        return "redirect:/";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteDelete(@PathVariable("id") long id) {
+        repository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/update/{id}")
+    public ModelAndView updateGet(@PathVariable("id")long id,@ModelAttribute Product product){
+        final ModelAndView modelAndView = new ModelAndView("update.html");
+        modelAndView.addObject("name",product.getName());
+        modelAndView.addObject("price",product.getPrice());
+        return modelAndView;
+    }
+
+    @PatchMapping("/update/{id}")
+    public String update(@PathVariable("id") long id,@ModelAttribute("product")Product product){
+        repository.save(product);
+        return "redirect:/";
     }
 
 

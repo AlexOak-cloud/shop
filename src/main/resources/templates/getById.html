@@ -6,7 +6,9 @@
 </head>
 <body>
 
-<p th:text="${product.getId + ') ' + product.getName + ' ' + product.getPrice}"></p>
+<p th:text="${product.getId + ') ' + product.getName + ' стоимость: ' + product.getPrice}"></p>
+
+<a th:href="@{/}">назад</a>
 
 </body>
 </html>
