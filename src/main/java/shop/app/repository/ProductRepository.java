@@ -1,12 +1,14 @@
 package shop.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 import shop.app.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository extends JpaRepository<Product,Integer> {
+@Component
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Override
     List<Product> findAll();

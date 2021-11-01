@@ -1,12 +1,14 @@
 package shop.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 import shop.app.entity.Account;
 import shop.app.entity.Person;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
 
