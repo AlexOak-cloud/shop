@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/signIn/check}" th:object="account" >
+    <label for="name">Name</label>
+    <input type="text" th:field="*{}" id="name" placeholder="name">
+
+</form>
+
+</body>
+</html>
