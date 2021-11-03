@@ -25,6 +25,12 @@ public class Account {
     @Column(name = "password")
     private String password;
 
+   /** CREATE TABLE account ( id INT PRIMARY KEY,
+    *                         login VARCHAR(255) NOT NULL,
+    *                         PASSWORD VARCHAR(255) NOT NULL)
+    *                         ENGINE=INNODB
+    */
+
     public Account(String login, String password) {
         this.login = login;
         this.password = password;
@@ -35,7 +41,9 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return id == account.id && Objects.equals(login, account.login) && Objects.equals(password, account.password);
+        return id == account.id
+                && Objects.equals(login, account.login)
+                && Objects.equals(password, account.password);
     }
 
     @Override
