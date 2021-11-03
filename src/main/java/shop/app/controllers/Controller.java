@@ -44,8 +44,8 @@ public class Controller {
     @PostMapping("/registration")
     public String registrationPost(Person person, Account account) {
         person.setAccount(account);
-        personRepository.save(person);
         accountRepository.save(account);
+        personRepository.save(person);
         return "redirect:/";
     }
 }

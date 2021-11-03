@@ -5,12 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-
-<form th:action="@{/signIn/check}" th:object="account" >
-    <label for="name">Name</label>
-    <input type="text" th:field="*{}" id="name" placeholder="name">
-
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
 </form>
-
 </body>
 </html>

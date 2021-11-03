@@ -15,6 +15,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @EnableJpaRepositories
+
 public class Person {
 
     @Id
@@ -24,7 +25,7 @@ public class Person {
     private String name;
     @Column(name = "phoneNumber")
     private String phoneNumber;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_id")
     private Account account;
 

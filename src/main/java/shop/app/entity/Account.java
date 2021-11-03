@@ -15,6 +15,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @EnableJpaRepositories
+
 public class Account {
 
     @Id
@@ -50,4 +51,5 @@ public class Account {
     public int hashCode() {
         return Objects.hash(id, login, password);
     }
+
 }
