@@ -3,37 +3,37 @@ package shop.app.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import shop.app.entity.Account;
-import shop.app.repository.AccountRepository;
+import shop.app.entity.User;
+import shop.app.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Component
-public class AccountService {
+public class UserService {
 
-    private final AccountRepository repository;
+    private final UserRepository repository;
 
     @Autowired
-    public AccountService(AccountRepository repository) {
+    public UserService(UserRepository repository) {
         this.repository = repository;
     }
 
-    public List<Account> findAll(){
+    public List<User> findAll(){
         return repository.findAll();
     }
 
 
-    public Account getById(Integer id){
+    public User getById(Integer id){
         return repository.getById(id);
     }
 
 
-    public <S extends Account> S save(S entity){
+    public <S extends User> S save(S entity){
         return repository.save(entity);
     }
 
-    public Optional<Account> findById(Integer id){
+    public Optional<User> findById(Integer id){
         return repository.findById(id);
     }
 
@@ -48,7 +48,7 @@ public class AccountService {
     }
 
 
-    public void delete(Account entity){
+    public void delete(User entity){
         repository.delete(entity);
     }
 

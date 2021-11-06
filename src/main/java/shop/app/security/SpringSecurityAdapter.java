@@ -20,11 +20,11 @@ public class SpringSecurityAdapter extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/","/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/signIn")
+                .loginPage("/")
                 .permitAll()
                 .and()
                 .logout()

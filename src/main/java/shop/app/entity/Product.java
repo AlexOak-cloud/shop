@@ -23,8 +23,8 @@ public class Product {
     @Column(name="price")
     private int price;
     @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     /**
      * CREATE TABLE product (id INT PRIMARY KEY AUTO_INCREMENT,
@@ -37,11 +37,12 @@ public class Product {
      * 						 ENGINE=INNODB
      */
 
-    public Product(String name, String description, int price, Person person) {
+
+    public Product(String name, String description, int price, User user) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.person = person;
+        this.user = user;
     }
 
     @Override
@@ -49,15 +50,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id == product.id
-                && price == product.price
-                && Objects.equals(name, product.name)
-                && Objects.equals(description, product.description)
-                && Objects.equals(person, product.person);
+        return id == product.id && price == product.price && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(user, product.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, person);
+        return Objects.hash(id, name, description, price, user);
     }
 }

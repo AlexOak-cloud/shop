@@ -2,50 +2,36 @@ package shop.app.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import shop.app.entity.Account;
-import shop.app.entity.Person;
-import shop.app.services.AccountService;
-import shop.app.services.PersonService;
+import shop.app.entity.User;
+import shop.app.repository.UserRepository;
 
 @org.springframework.stereotype.Controller
 public class Controller {
 
     @Autowired
-    private AccountService accountRepository;
-
-    @Autowired
-    private PersonService personRepository;
-
+    private UserRepository repository;
 
     @GetMapping("/")
-    public String mainMenu() {
-        return "main-menu.html";
+    public ModelAndView mainMenu() {
+        return new ModelAndView("main-menu.html");
     }
 
-    @GetMapping("/signIn")
-    public String signIn(@ModelAttribute("account") Account account) {
-        return "sign-in.html";
-    }
+
 
     @GetMapping("/registration")
-    public ModelAndView registrationGet(@ModelAttribute("person") Person person,
-                                        @ModelAttribute("account") Account account) {
+    public ModelAndView registrationGet(@ModelAttribute("user") User user) {
         ModelAndView mav = new ModelAndView("registration.html");
-        mav.addObject("person",person);
-        mav.addObject("account ",account);
+        mav.addObject("user", user);
         return mav;
     }
 
     @PostMapping("/registration")
-    public String registrationPost(Person person, Account account) {
-        person.setAccount(account);
-        accountRepository.save(account);
-        personRepository.save(person);
+    public String registrationPost(User user) {
+        repository.save(user);
         return "redirect:/";
     }
 }

@@ -2,26 +2,26 @@ package shop.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
-import shop.app.entity.Person;
-import shop.app.entity.Product;
+import shop.app.entity.User;
 
 import java.util.List;
 import java.util.Optional;
 
 @Component
-public interface PersonRepository extends JpaRepository<Person, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
+
 
     @Override
-    List<Person> findAll();
+    List<User> findAll();
 
     @Override
-    Person getById(Integer integer);
+    User getById(Integer integer);
 
     @Override
-    <S extends Person> S save(S entity);
+    <S extends User> S save(S entity);
 
     @Override
-    Optional<Person> findById(Integer integer);
+    Optional<User> findById(Integer integer);
 
     @Override
     boolean existsById(Integer integer);
@@ -30,5 +30,5 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     void deleteById(Integer integer);
 
     @Override
-    void delete(Person entity);
+    void delete(User entity);
 }

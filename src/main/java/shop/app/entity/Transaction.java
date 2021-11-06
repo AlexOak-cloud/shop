@@ -1,6 +1,5 @@
 package shop.app.entity;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +21,8 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "user_id")
+    private User user;
     @OneToOne
     @JoinColumn(name = "product_id")
     private Product product;
@@ -42,8 +41,8 @@ public class Transaction {
      * 							  ENGINE = INNODB
      */
 
-    public Transaction(Person person, Product product, LocalDateTime time) {
-        this.person = person;
+    public Transaction(User user, Product product, LocalDateTime time) {
+        this.user = user;
         this.product = product;
         this.time = time;
     }
@@ -53,14 +52,11 @@ public class Transaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return id == that.id
-                && Objects.equals(person, that.person)
-                && Objects.equals(product, that.product)
-                && Objects.equals(time, that.time);
+        return id == that.id && Objects.equals(user, that.user) && Objects.equals(product, that.product) && Objects.equals(time, that.time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, person, product, time);
+        return Objects.hash(id, user, product, time);
     }
 }
