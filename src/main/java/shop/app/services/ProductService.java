@@ -1,52 +1,29 @@
 package shop.app.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import shop.app.entity.Product;
+
+import org.springframework.stereotype.Component;
+import shop.app.entity.User;
 import shop.app.repository.ProductRepository;
 
 import java.util.List;
-import java.util.Optional;
 
-public class ProductService {
+@Component
+public interface ProductService extends ProductRepository {
+    @Override
+    List<User> findAll();
 
-    private final ProductRepository repository;
+    @Override
+    User getById(Integer integer);
 
-    @Autowired
-    public ProductService(ProductRepository repository) {
-        this.repository = repository;
-    }
+    @Override
+    <S extends User> S save(S entity);
 
+    @Override
+    boolean existsById(Integer integer);
 
-    public List<Product> findAll(){
-        return repository.findAll();
-    }
+    @Override
+    void deleteById(Integer integer);
 
-
-    public Product getById(Integer id){
-        return repository.getById(id);
-    }
-
-
-    public <S extends Product> S save(S entity){
-        return repository.save(entity);
-    }
-
-    public Optional<Product> findById(Integer id){
-        return repository.findById(id);
-    }
-
-
-    public boolean existsById(Integer id){
-        return repository.existsById(id);
-    }
-
-
-    public void deleteById(Integer id){
-        repository.deleteById(id);
-    }
-
-
-    public void delete(Product entity){
-        repository.delete(entity);
-    }
+    @Override
+    void delete(User entity);
 }
