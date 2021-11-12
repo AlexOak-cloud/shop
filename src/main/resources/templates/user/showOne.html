@@ -7,6 +7,9 @@
 <body>
 
 <p th:text="${user.getId + ') '+ user.getUsername + ' ' + user.getPhoneNumber}">default</p>
+</br>
+
+<a th:href="@{/user/showAll}">назад</a>
 
 </body>
 </html>

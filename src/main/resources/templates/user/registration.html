@@ -7,13 +7,17 @@
 <body>
 
 <form th:method="post" th:object="${user}" th:action="@{/user/registration}">
-  <label for="username">UserName</label>
-  <input type="text" id="username" th:field="*{username}" placeholder="username">
-  </br>
-  <label for="phoneNumber">Phone number</label>
-  <input type="text" id="phoneNumber" th:field="*{phoneNumber}" placeholder="phoneNumber">
-  </br>
-  <input type="=submit" value="create user" >
+    <label for="username">UserName</label>
+    <input type="text" id="username" th:field="*{username}" placeholder="username">
+    </br>
+    <label for="phoneNumber">Phone number</label>
+    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" placeholder="phoneNumber">
+    </br>
+    <input type="submit" value="create user">
 </form>
+</br>
+<a th:href="@{/}">Главное меню</a>
+</br>
+<a th:href="@{/user/showAll}">Список пользователей</a>
 </body>
 </html>

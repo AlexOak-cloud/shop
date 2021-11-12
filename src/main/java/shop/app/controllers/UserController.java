@@ -49,4 +49,10 @@ public class UserController {
         repo.save(user);
         return new ModelAndView("redirect:/user/showAll");
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ModelAndView deleteUser(@PathVariable("id") int id){
+        repo.deleteById(id);
+        return new ModelAndView("redirect:/user/showAll");
+    }
 }
