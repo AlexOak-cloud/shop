@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/product/createProduct}" th:method="post" th:object="${product}">
+
+    <label for="name">Name</label>
+    <input id="name" type="text" th:field="*{name}" placeholder="Name">
+    </br>
+    <label for="price">Price</label>
+    <input id="price" type="text" th:field="*{price}" placeholder="Price">
+    </br>
+    <input type="submit" value="create">
+
+</form>
+
+</body>
+</html>
