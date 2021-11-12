@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Show One</title>
+    <title>Show user</title>
 </head>
 <body>
 
-<p th:text="${product.getId + ') ' + product.getName + product.getPrice}">Default</p>
+<p th:text="${user.getId + ') '+ user.getUsername + ' ' + user.getPhoneNumber}">default</p>
 
 </body>
 </html>

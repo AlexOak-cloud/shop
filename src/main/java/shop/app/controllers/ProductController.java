@@ -23,7 +23,7 @@ public class ProductController {
 
     @GetMapping("/showAll")
     public ModelAndView getAll(){
-        ModelAndView mav = new ModelAndView("showAllProduct.html");
+        ModelAndView mav = new ModelAndView("product/showAllProduct.html");
         final List<Product> all = repo.findAll();
         mav.addObject("all",all);
         return mav;
@@ -31,7 +31,7 @@ public class ProductController {
 
     @GetMapping("/showOne/{id}")
     public ModelAndView getById(@PathVariable("id") int id){
-        ModelAndView mav = new ModelAndView("showByIdProduct.html");
+        ModelAndView mav = new ModelAndView("product/showByIdProduct.html");
         final Product byId = repo.getById(id);
         mav.addObject("product",byId);
         return mav;
@@ -39,7 +39,7 @@ public class ProductController {
 
     @GetMapping("/createProduct")
     public ModelAndView newProductGet(@ModelAttribute("product")Product product){
-        ModelAndView mav = new ModelAndView("createProduct.html");
+        ModelAndView mav = new ModelAndView("product/createProduct.html");
         mav.addObject("product",new Product());
         return mav;
     }
@@ -47,6 +47,12 @@ public class ProductController {
     @PostMapping("/createProduct")
     public String  newProductPost(Product product){
         repo.save(product);
+        return "redirect:/product/showAll";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id){
+        repo.deleteById(id);
         return "redirect:/product/showAll";
     }
 }

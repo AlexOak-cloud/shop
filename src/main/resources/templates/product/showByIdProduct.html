@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show One</title>
+</head>
+<body>
+
+<p th:text="${product.getId + ') ' + product.getName + product.getPrice}">Default</p>
+
+</br>
+
+<a th:href="@{/product/createProduct">назад</a>
+<a th:href="@{/}">Главное меню</a>
+
+</body>
+</html>

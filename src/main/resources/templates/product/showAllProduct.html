@@ -11,7 +11,13 @@
 </br>
 <div th:each="product : ${all}">
   <a th:href ="@{showOne/{id}(id=${product.getId})}" th:text="${product.getId + ') ' + product.getName}">default</a>
+    <form th:action="@{/product/delete/{id}(id=${product.getId})}" th:method="delete">
+        <input type="submit" value="delete">
+    </form>
+    </br>
 </div>
-
+<a th:href="@{/product/createProduct}">Добавить объявление</a>
+</br>
+<a th:href="@{/}">Главное меню</a>
 </body>
 </html>
