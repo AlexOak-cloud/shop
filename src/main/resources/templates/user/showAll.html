@@ -9,7 +9,7 @@
 
 <div th:each="user :${all}" >
   <a th:href="@{/user/showOne/{id}(id=${user.getId})}" th:text="${user.getId + ') ' + user.getUsername}"> default</a>
-    <form th:method="delete" th:action="@{/user/delete/{id}(id=user.getId})}" >
+    <form th:method="delete" th:action="@{/user/delete/{id}(id=${user.getId})}" >
         <input type="submit" value="delete">
     </form>
 </div>
