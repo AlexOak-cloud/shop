@@ -2,18 +2,26 @@ package shop.app.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shop.app.entity.Role;
 import shop.app.entity.User;
+import shop.app.entity.UserRole;
 import shop.app.services.UserService;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/user")
+@EnableJpaRepositories
 public class UserController {
 
+    @Autowired
     private final UserService repo;
 
     @Autowired
@@ -46,6 +54,9 @@ public class UserController {
 
     @PostMapping("/registration")
     public ModelAndView registrationPost(User user) {
+        Set<UserRole> set = new HashSet<>();
+        set.add(new UserRole(Role.ROLE_USER));
+        user.setRoles(set);
         repo.save(user);
         return new ModelAndView("redirect:/user/showAll");
     }

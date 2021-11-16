@@ -23,5 +23,7 @@ public class User {
     private String password;
     @Column(name = "phone_number")
     private String phoneNumber;
-
+    @Enumerated
+    @Column(name = "roles")
+    private Set<UserRole> roles;
 }

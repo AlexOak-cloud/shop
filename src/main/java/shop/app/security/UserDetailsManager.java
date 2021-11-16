@@ -1,38 +1,41 @@
-package shop.app.securityConfig;
+package shop.app.security;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import shop.app.security.test.Account;
+import shop.app.entity.User;
 
 import java.util.Collection;
 
-
 @Data
 @Builder
-@EnableJpaRepositories
-public class AccountUserDetails implements UserDetails {
+@RequiredArgsConstructor
+public class UserDetailsManager implements UserDetails {
+
+    private User user;
 
     @Autowired
-    private Account account;
+    public UserDetailsManager(User user) {
+        this.user = user;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return user.getRoles();
     }
 
     @Override
     public String getPassword() {
-        return account.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return account.getUsername();
+        return user.getUsername();
     }
 
     @Override
