@@ -6,12 +6,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import shop.app.entity.Role;
+import shop.app.entity.Roles;
 import shop.app.entity.User;
-import shop.app.entity.UserRole;
+import shop.app.services.RoleService;
 import shop.app.services.UserService;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,17 +21,17 @@ import java.util.Set;
 public class UserController {
 
     @Autowired
-    private final UserService repo;
+    private RoleService roleService;
 
     @Autowired
-    public UserController(UserService repo) {
-        this.repo = repo;
-    }
+    private UserService userService;
+
+
 
     @GetMapping("/showAll")
     public ModelAndView showAll() {
         ModelAndView mav = new ModelAndView("user/showAll.html");
-        final List<User> all = repo.findAll();
+        final List<User> all = userService.findAll();
         mav.addObject("all", all);
         return mav;
     }
@@ -40,7 +39,7 @@ public class UserController {
     @GetMapping("/showOne/{id}")
     public ModelAndView showOne(@PathVariable("id") int id) {
         ModelAndView mav = new ModelAndView("user/showOne.html");
-        final User user = repo.getById(id);
+        final User user = userService.getById(id);
         mav.addObject("user", user);
         return mav;
     }
@@ -54,16 +53,15 @@ public class UserController {
 
     @PostMapping("/registration")
     public ModelAndView registrationPost(User user) {
-        Set<UserRole> set = new HashSet<>();
-        set.add(new UserRole(Role.ROLE_USER));
-        user.setRoles(set);
-        repo.save(user);
+        Set<Roles> role = new HashSet<>();
+        role.add(roleService.getById((byte) 1));
+        userService.save(user);
         return new ModelAndView("redirect:/user/showAll");
     }
 
     @DeleteMapping("/delete/{id}")
     public ModelAndView deleteUser(@PathVariable("id") int id){
-        repo.deleteById(id);
+        userService.deleteById(id);
         return new ModelAndView("redirect:/user/showAll");
     }
 }
