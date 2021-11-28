@@ -4,43 +4,56 @@ package shop.app.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
+@Entity
+@Table(name = "usr")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "users_tbl")
-public class User {
+@EnableJpaRepositories
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "username")
     private String username;
-    @Column(name = "password")
+    @Column(name="password")
     private String password;
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @Column(name ="age")
+    private String age;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
-    @ElementCollection(targetClass = Roles.class)
-    @CollectionTable(name = "user_roles")
-    @OneToMany
-    @JoinColumn(name = "role_id")
-    private Set<Roles> roles;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles;
+    }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-    /**
-     * CREATE TABLE users_tbl(id INT AUTO_INCREMENT PRIMARY KEY,
-     *                        username VARCHAR(255) NOT NULL,
-     *                        PASSWORD VARCHAR(255) NOT NULL,
-     *                        phone_number VARCHAR(255) NOT NULL,
-     *                        role_id INT ,
-     *                        FOREIGN KEY (role_id) REFERENCES user_roles(id)
-     *                        oN DELETE CASCADE oN UPDATE CASCADE )
-     *                        ENGINE = INNODB
-     *
-     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

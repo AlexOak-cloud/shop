@@ -1,8 +1,11 @@
 package shop.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import shop.app.entity.Roles;
+import org.springframework.stereotype.Repository;
+import shop.app.entity.Role;
 
-public interface RoleRepository extends JpaRepository<Roles, Byte> {
+@Repository
+public interface RoleRepository extends JpaRepository<Role,Integer> {
+
 
 }
