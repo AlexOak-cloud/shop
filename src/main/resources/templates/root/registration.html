@@ -5,12 +5,24 @@
 </head>
 <body>
 <form th:action="@{/registration}" method="post" th:object="${user}">
+
   <div><label> Login : <input type="text" th:field="*{username}" name="username"/> </label></div>
+  <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+
   <div><label> Password: <input type="password" th:field="*{password}" name="password"/> </label></div>
+  <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+
   <div><label> Your Name: <input type="text" th:field="*{name}" name="name"/> </label></div>
+  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
   <div><label> Your Second Name: <input type="text" th:field="*{secondName}" name="secondName"/> </label></div>
+  <span th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></span>
+
   <div><label> Your Phone Number: <input type="text" th:field="*{phoneNumber}" name="phoneNumber"/> </label></div>
+  <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+
   <div><input type="submit" value="Registration"/></div>
+
 </form>
 </body>
 </html>

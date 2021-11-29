@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
@@ -26,14 +28,24 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "username")
+    @NotNull
+    @Size(min = 3,max = 10)
     private String username;
-    @Column(name="password")
+    @Column(name = "password")
+    @NotNull
+    @Size(min = 3,max = 10)
     private String password;
     @Column(name = "name")
+    @NotNull
+    @Size(min = 3,max = 10)
     private String name;
-    @Column (name = "secondName")
+    @Column(name = "secondName")
+    @NotNull
+    @Size(min = 3,max = 10)
     private String secondName;
     @Column(name = "phone_number")
+    @NotNull
+    @Size(min = 7,max = 12)
     private String phoneNumber;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
