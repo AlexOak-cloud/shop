@@ -12,13 +12,14 @@ import shop.app.repository.UserRepository;
 import shop.app.entity.User;
 
 import javax.persistence.EntityManager;
+import java.net.SecureCacheResponse;
+import java.security.Principal;
+import java.security.ProtectionDomain;
 import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
 
-    @Autowired
-    private EntityManager em;
     @Autowired
     private BCryptPasswordEncoder encoder;
 
@@ -33,24 +34,24 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(userName);
 
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return user;
     }
 
-    public User findUserById(int id){
+    public User findUserById(int id) {
         final Optional<User> userById = userRepository.findById(id);
         return userById.orElse(new User());
     }
 
-    public List<User> allUsers(){
+    public List<User> allUsers() {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user){
+    public boolean saveUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
-        if(userFromDB != null){
+        if (userFromDB != null) {
             return false;
         }
         Set<Role> roles = new HashSet<>();
@@ -62,17 +63,16 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public  boolean deleteUser(int userId){
-        if(userRepository.findById(userId).isPresent()){
+    public boolean deleteUser(int userId) {
+        if (userRepository.findById(userId).isPresent()) {
             userRepository.deleteById(userId);
             return true;
         }
         return false;
     }
 
-
-    public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
+    public User getAuthUser() {
+        Principal principal =
+        return userRepository.findByUsername(principal.getName());
     }
 }

@@ -5,15 +5,18 @@ import org.hibernate.boot.model.relational.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import shop.app.entity.products.Product;
 import shop.app.repository.ProductRepository;
 
 import javax.sql.DataSource;
+import java.security.Principal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,12 +27,20 @@ public class ProductService {
     private ProductRepository repository;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private Principal principal;
 
     public boolean save(Product product) {
         if (product == null || repository.getById(product.getId()) != null) {
             return false;
         }
+        product.setUser(userService.getAuthUser());
+        product.setDate(LocalDateTime.now());
         repository.save(product);
         return true;
     }
