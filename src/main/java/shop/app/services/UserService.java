@@ -7,24 +7,26 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import shop.app.entity.Role;
+import shop.app.repository.RoleRepository;
 import shop.app.repository.UserRepository;
 import shop.app.entity.User;
 
 import javax.persistence.EntityManager;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired
     private EntityManager em;
-
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
 
     @Override
@@ -48,12 +50,13 @@ public class UserService implements UserDetailsService {
 
     public boolean saveUser(User user){
         User userFromDB = userRepository.findByUsername(user.getUsername());
-
         if(userFromDB != null){
             return false;
         }
-
-        user.setRoles(Collections.singleton(new Role(1L,"ROLE_USER")));
+        Set<Role> roles = new HashSet<>();
+        final Role roleById = roleRepository.getById(1);
+        roles.add(roleById);
+        user.setRoles(roles);
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;

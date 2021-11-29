@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -19,6 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @EnableJpaRepositories
+@Component
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +29,12 @@ public class User implements UserDetails {
     private String username;
     @Column(name="password")
     private String password;
-    @Column(name ="age")
-    private String age;
+    @Column(name = "name")
+    private String name;
+    @Column (name = "secondName")
+    private String secondName;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
