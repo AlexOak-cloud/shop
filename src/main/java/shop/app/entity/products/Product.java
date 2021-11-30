@@ -37,6 +37,5 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
     @Column(name = "category")
-    @NotNull
     private String category;
 }

@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Добавить товар</title>
 </head>
 <body>
-
 <h3>Добавьте товар</h3>
-<form method="post" th:object="*{product}" th:action="@{/product/create}">
+<form method="post" th:object="${product}" th:action="@{/product/create}">
     <label for="name">Название</label>
     <input id="name" th:field="*{name}" type="text" placeholder="name">
+    </br>
     <label for="description">Описание</label>
     <input id="description" th:field="*{description}" type="text" placeholder="description">
+    </br>
     <label for="price">Стоимость</label>
     <input id="price" th:field="*{price}" type="text" placeholder="price">
-    <label for="category">Категория</label>
-    <input id="category" th:field="*{category}" type="text" placeholder="category">
+    </br>
+    <div th:switch="*{category}">
+        <p th:case="'admin'">Administrator</p>
+        <p th:case="'manager'">Manager</p>
+        <p th:case="'user'">User</p>
+    </div>
+
+    </br>
+    <input type="submit" value="create">
 </form>
 </body>
 </html>

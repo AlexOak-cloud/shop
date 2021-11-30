@@ -22,8 +22,7 @@ public class UserController {
     @ResponseBody
     public ModelAndView userMain(Principal principal) {
         ModelAndView mav = new ModelAndView("user/main.html");
-        final UserDetails userDetails = userService.loadUserByUsername(principal.getName());
-        mav.addObject("user", userDetails);
+        mav.addObject("user", userService.getAuthUser());
         return mav;
     }
 }

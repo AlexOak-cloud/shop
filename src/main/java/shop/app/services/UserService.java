@@ -1,6 +1,8 @@
 package shop.app.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,10 +13,6 @@ import shop.app.repository.RoleRepository;
 import shop.app.repository.UserRepository;
 import shop.app.entity.User;
 
-import javax.persistence.EntityManager;
-import java.net.SecureCacheResponse;
-import java.security.Principal;
-import java.security.ProtectionDomain;
 import java.util.*;
 
 @Service
@@ -28,7 +26,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private RoleRepository roleRepository;
-
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -72,7 +69,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User getAuthUser() {
-        Principal principal =
-        return userRepository.findByUsername(principal.getName());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return userRepository.findByUsername(authentication.getName());
     }
 }

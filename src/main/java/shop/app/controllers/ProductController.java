@@ -21,7 +21,7 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/create")
-    public ModelAndView createGet(@ModelAttribute("/product")Product product){
+    public ModelAndView createGet(@ModelAttribute("product")Product product){
         ModelAndView mav = new ModelAndView("/product/create.html");
         mav.addObject("product", new Product());
         return mav;
@@ -31,7 +31,7 @@ public class ProductController {
     @PostMapping("/create")
     public ModelAndView createPost(@Valid Product product, @Autowired BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            new ModelAndView("/product/create");
+            new ModelAndView("/product/create.html");
         }
         productService.save(product);
         return new ModelAndView("redirect:/user/main");
