@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <style>
+    h2 {
+      text- align : center;
+    }
+    #stringInput {
+     font-size: 70;
+     text-align: center;
+    }
+    #passwordInput{
+    form-align: center;
+    }
+    h4{
+    text-align: center;
+    }
+
+    #inputName{
+    text-align: center;
+    }
+    #button{
+    text-align: center;
+    }
+
+  </style>
 </head>
 <body>
 <div>
   <form method="POST" action="/login">
-    <h2>Вход в систему</h2>
+    <h2 id="stringInput">Вход</h2>
     <div>
-      <input name="username" type="text" placeholder="Username"
+      <input id="inputName" name="username" type="text" placeholder="Username"
              autofocus="true"/>
-      <input name="password" type="password" placeholder="Password"/>
-      <button type="submit">Log In</button>
+      <input id="inputPassword" name="password" type="password" placeholder="Password"/>
+      <button id="button" type="submit">Log In</button>
       <h4><a th:href="@{/registration}">Зарегистрироваться</a></h4>
     </div>
   </form>

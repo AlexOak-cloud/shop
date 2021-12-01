@@ -9,7 +9,8 @@ import shop.app.entity.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Table(name = "products")
@@ -32,10 +33,10 @@ public class Product {
     @NotNull
     private int price;
     @Column(name = "date")
-    private LocalDateTime date;
+    private LocalDate date;
+    @Column(name = "category")
+    private String category;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @Column(name = "category")
-    private String category;
 }

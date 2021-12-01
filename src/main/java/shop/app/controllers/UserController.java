@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import shop.app.services.ProductService;
 import shop.app.services.UserService;
 
 import java.security.Principal;
@@ -18,10 +19,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping("/main")
     @ResponseBody
     public ModelAndView userMain(Principal principal) {
         ModelAndView mav = new ModelAndView("user/main.html");
+        mav.addObject("allProductsByUser",productService.getAllByUser(userService.getAuthUser()));
         mav.addObject("user", userService.getAuthUser());
         return mav;
     }

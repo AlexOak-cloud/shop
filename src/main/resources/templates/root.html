@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> <head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"> <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        h1 {
+        text-align: center;
+        }
+        #mainName{
+          font-size: 100px ;
+        }
+        #description {
+        text-align: center;
+        }
+
+    </style>
 </head>
 <body>
 
-<a th:href="@{/login}">Вход</a>
+<h1 id="mainName"> Cookie shop</h1>
+<p id="description">Самая маленькая площадка для продажи Б/У товаров в интернете</p>
 </br>
-<a th:href="@{/registration}">Регистрция</a>
+<h1><a th:href="@{/registration}">Регистрция</a></h1>
+</br>
+<h1><a th:href="@{/login}">Вход</a></h1>
 
 </body>
 </html>

@@ -16,14 +16,16 @@
     <label for="price">Стоимость</label>
     <input id="price" th:field="*{price}" type="text" placeholder="price">
     </br>
-    <div th:switch="*{category}">
-        <p th:case="'admin'">Administrator</p>
-        <p th:case="'manager'">Manager</p>
-        <p th:case="'user'">User</p>
-    </div>
-
+    <p>Выберит категорию :</p>
+    <input type="radio" id="DRESS" th:field="*{category}" name="DRESS" value="DRESS">
+    <label for="DRESS">Одежда</label><br>
+    <input type="radio" id="CARS" th:field="*{category}" name="CARS" value="CARS">
+    <label for="CARS">Автомобили</label><br>
+    <input type="radio" id="TECHNOLOGIES" th:field="*{category}" name="TECHNOLOGIES" value="TECHNOLOGIES">
+    <label for="TECHNOLOGIES">Технологии</label>
     </br>
-    <input type="submit" value="create">
+    </br>
+    <input type="submit" value="Добавить">
 </form>
 </body>
 </html>

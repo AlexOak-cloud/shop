@@ -38,7 +38,6 @@ public class RootController {
             return new ModelAndView("root/registration");
         }
         userService.saveUser(user);
-        return new ModelAndView("redirect:/login.html");
+        return new ModelAndView("redirect:/login");
     }
-
 }

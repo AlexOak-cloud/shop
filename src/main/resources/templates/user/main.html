@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>asd</title>
+    <style>
+
+h1 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+p {
+  color: black;
+  text-align: center;
+}
+a {
+  color: black;
+  text-align: center;
+}
+
+</style>
 </head>
 <body>
-<h2 th:text="${user.getName + ' ' + user.getSecondName}"></h2>
+<h1 th:text="${user.getName + ' ' + user.getSecondName}"></h1>
 <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}"></h3>
-<p>Список ваших товарова: </p>
 
 
+<h3>Список ваших товарова: </h3>
+<tr th:each="product : ${allProductsByUser}">
+    <p th:text="${product.getName + ' ' + product.getPrice}"> Error Thymleaf</p>
+</tr>
 
-<a th:href="@{/product/create}">Добавить товар</a>
+
+<h3><a th:href="@{/product/create}">Добавить товар</a></h3>
+
 
 
 </body>
