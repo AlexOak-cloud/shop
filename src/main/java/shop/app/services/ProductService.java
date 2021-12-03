@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import shop.app.appUtills.SqlQuery;
 import shop.app.entity.User;
 import shop.app.entity.products.Product;
+import shop.app.entity.products.ProductCategories;
 import shop.app.repository.ProductRepository;
 
 import javax.sql.DataSource;
@@ -17,6 +18,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -52,12 +54,19 @@ public class ProductService implements SqlQuery {
         return repository.findAll();
     }
 
+    public List<Product> sortedListByDate(List<Product> list) {
+        list.sort(Comparator.comparing(Product::getDate));
+        Collections.reverse(list);
+        return list;
+    }
+
     public void deleteById(int id) {
         repository.deleteById(id);
     }
 
-    public List<Product> getAllByUser(User user) {
+    public List<Product> getAllByUser() {
         try {
+            User user = userService.getAuthUser();
             List<Product> list = new ArrayList<>();
             final Connection connection = dataSource.getConnection();
             final Statement statement = connection.createStatement();
@@ -72,12 +81,34 @@ public class ProductService implements SqlQuery {
                 product.setName(resultSet.getString(5));
                 product.setPrice(Integer.parseInt(resultSet.getString(6)));
                 product.setUser(user);
-                if(getById(product.getId()) != null){
-                    continue;
-                }
                 list.add(product);
             }
             return list;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    public List<Product> getAllByCategory(ProductCategories categories) {
+        List<Product> products = new ArrayList<>();
+        try {
+            final ResultSet resultSet = dataSource.
+                    getConnection().
+                    createStatement().
+                    executeQuery(String.format(SqlQuery.getAllCategory, categories.toString()));
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setId(Integer.parseInt(resultSet.getString(1)));
+                product.setCategory(resultSet.getString(2));
+                product.setDate(LocalDate.parse(resultSet.getString(3)));
+                product.setDescription(resultSet.getString(4));
+                product.setName(resultSet.getString(5));
+                product.setPrice(Integer.parseInt(resultSet.getString(6)));
+                product.setUser(userService.getAuthUser());
+                products.add(product);
+            }
+            return products;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return Collections.emptyList();

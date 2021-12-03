@@ -26,7 +26,8 @@ public class UserController {
     @ResponseBody
     public ModelAndView userMain(Principal principal) {
         ModelAndView mav = new ModelAndView("user/main.html");
-        mav.addObject("allProductsByUser",productService.getAllByUser(userService.getAuthUser()));
+
+        mav.addObject("allProductsByUser",productService.getAllByUser());
         mav.addObject("user", userService.getAuthUser());
         return mav;
     }

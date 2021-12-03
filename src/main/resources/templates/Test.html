@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>asd</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
     <style>
-     #nameShop{
+    #nameShop{
     border: 3px solid black;
     font-size: 20px;
     text-align: center;
@@ -77,26 +78,21 @@
          margin-left: 400px;
          text-align:center;
 }
-
-</style>
+    </style>
 </head>
 <body>
-<h1 id="nameShop">CookieShop</h1>
-<h1 id="username" th:text="${user.getName + ' ' + user.getSecondName}"></h1>
-<h3 id="phoneNumber" th:text="${'Phone Number: ' + user.getPhoneNumber}"></h3>
+<div id="nameShop"><h1>CookieShop</h1></div>
+<div id="mainDiv">
+<h1 id="allProducts">Новинки в товарах</h1>
+<h1 id="username">Sasha Dubovec</h1>
+</div>
+<h3 id="phoneNumber">phone Number: 123123123</h3>
+<div id="yourProduct">
+    <h3>Ваши товары:</h3>
+    <h1>Gwgw</h1>
+</div>
 
-<div id="list">
-<h3>Список ваших товарова: </h3>
-
-<tr th:each="product : ${allProductsByUser}">
-    <p th:text="${product.getName + ' ' + product.getPrice}"> Error Thymleaf</p>
-    <a th:href="@{/product/delete/{id}(id=${product.getId})}">удалить</a>
-</tr>
-
-
-<h3 id="add"><a th:href="@{/product/create}">Добавить товар</a></h3>
-
-
+<h3 id="add">Добавить товар</h3>
 
 </body>
 </html>
