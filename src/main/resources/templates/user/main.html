@@ -1,102 +1,91 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>asd</title>
+    <meta charset="UTF-8">
+    <title>CookieShop</title>
     <style>
-     #nameShop{
-    border: 3px solid black;
-    font-size: 20px;
-    text-align: center;
-    height: 70px;
-    weight: 100%;
-    background-color: LightSalmon;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    padding: 5px;
-    border-radius: 12px;
+        #nameShop{
+        font-size: 15px;
+        text-align: center;
+        border: 3px solid black;
+        height: 80px;
+        width: 100%;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        }
+        #userSide{
+        display: inl
+        border: 3px solid black;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        height: 530px;
+        width: 100%;
+        margin-left: 0px;
+        }
+        #username{
+        border: 1px solid black;
+        border-radius: 15px;
+        height: 120px;
+        width: 33%;
+        text-align: center;
+        }
+        #productListName{
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        height: 330px;
+        width: 33%;
+        }
+        #addProduct{
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        height: 70px ;
+        width: 33%;
+        font-size: 25px;
+        }
+        #allProducts{
+        border: 3px solid black;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 20px;
+        height: 330px;
+        width: 33%;
+         display:inline-block;
 
-    }
-       #username {
-       margin-top: -50px;
-        height: 40px;
-  width: 350px;
-  background-color: powderblue;
-         border-radius: 12px;
-  padding: 5px;
-       background-color: ff961f;
-  border: 1px solid black;
-  margin-bottom: 10px;
-  margin-right: 1000px;
-  margin-left: 15px;
-  text-align:center;
-}
+        }
+        #userBlock {
 
-#phoneNumber{
-         border-radius: 12px;
-         padding: 5px;
-         background-color: ff961f;
-         border: 1px solid black;
-         width: 350px;
-         margin-bottom: 12px;
-         margin-right: 1000px;
-         margin-left: 15px;
-         text-align:center;
-}
-#yourProduct{
- border-radius: 12px;
-         padding: 5px;
-         background-color: ff961f;
-         border: 1px solid black;
-     width: 350px;
-         margin-bottom: 12px;
-         margin-right: 1000px;
-         margin-left: 15px;
-         text-align:center;
-}
-#add{
- border-radius: 12px;
-         padding: 5px;
-         background-color: ff961f;
-         border: 1px solid black;
- margin-top: 280px;
-         margin-bottom: 100px;
-         margin-right: 1000px;
-         margin-left: 15px;
-         text-align:center;
-}
-#allProducts{
-         height: 40px;
-         width: 35%;
-         background-color: powderblue;
-         border-radius: 12px;
-         padding: 5px;
-         background-color: ff961f;
-         border: 1px solid black;
-         margin-bottom: 0px;
-         margin-right: 100px;
-         margin-left: 400px;
-         text-align:center;
-}
-
-</style>
+        width: 33%;
+        }
+    </style>
 </head>
 <body>
-<h1 id="nameShop">CookieShop</h1>
-<h1 id="username" th:text="${user.getName + ' ' + user.getSecondName}"></h1>
-<h3 id="phoneNumber" th:text="${'Phone Number: ' + user.getPhoneNumber}"></h3>
+<div id="nameShop">
+    <h1>CookieShop</h1>
+</div>
+<div id="userSide">
+    <div id="userBlock">
+    <div id="username">
+        <h1 th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
+        <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
+    </div>
+    <div id="userList">
+        <div id="productListName">
+            <h3>Список ваших товаров: </h3>
+        </div>
+    </div>
+    <div id="addProduct">
+        <a th:href="@{/product/create}">Добавить продукт</a>
+    </div>
+    </div>
+    <div id="allProducts">
+    <h3>Новости в товарах</h3>
+        <tr th:each="product : ${allProduct}">
+            <a th:text="${product.getName + ' стоимость: ' product.getPrice}"></a>
+        </tr>
+    </div>
 
-<div id="list">
-<h3>Список ваших товарова: </h3>
-
-<tr th:each="product : ${allProductsByUser}">
-    <p th:text="${product.getName + ' ' + product.getPrice}"> Error Thymleaf</p>
-    <a th:href="@{/product/delete/{id}(id=${product.getId})}">удалить</a>
-</tr>
-
-
-<h3 id="add"><a th:href="@{/product/create}">Добавить товар</a></h3>
-
-
-
+</div>
 </body>
 </html>
