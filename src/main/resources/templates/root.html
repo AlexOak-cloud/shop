@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"> <head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        h1 {
-        text-align: center;
-        }
-        #mainName{
-          font-size: 100px ;
-        }
-        #description {
-        text-align: center;
-        }
+        #nameShop{
+                  font-size: 15px;
+                  text-align: center;
+                  border: 3px solid black;
+                  height: 100px;
+                  width: 100%;
+                  border-radius: 15px;
+                  background-color: LightSalmon;
+       }
+        #regis{
+                  font-size: 20px;
+                  text-align: center;
+       }
+       #login{
+                  font-size: 20px;
+                  text-align: center;
+       }
 
     </style>
 </head>
 <body>
 
-<h1 id="mainName"> Cookie shop</h1>
-<p id="description">Самая маленькая площадка для продажи Б/У товаров в интернете</p>
+
+<div id="nameShop">
+    <h1> CookieShop</h1>
+    <h4>Самая маленькая площадка для продажи Б/У товаров в интернете</h4>
+</div>
+
 </br>
-<h1><a th:href="@{/registration}">Регистрция</a></h1>
+
+<div id="regis">
+    <h1><a th:href="@{/registration}">Регистрция</a></h1>
+</div>
+
 </br>
-<h1><a th:href="@{/login}">Вход</a></h1>
+
+<div id="login">
+    <h1><a th:href="@{/login}">Вход</a></h1>
+</div>
 
 </body>
 </html>
