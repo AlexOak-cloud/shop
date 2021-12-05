@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
@@ -49,13 +50,13 @@
         #allProducts{
         border: 1px solid black;
         position: absolute;
-        left: 33%;
+        left: 34%;
         top: 14%;
         border-radius: 15px;
         text-align: center;
         font-size: 20px;
         height: 83%;
-        width: 33%;
+        width: 32%;
         }
 
         #news{
@@ -69,6 +70,17 @@
               height: 83%;
               width: 33%
               }
+        #userList{
+        overflow: scroll ;
+        width: 33%;
+        height: 63%;
+        border: 1px solid black;
+        border-radius: 15px;
+        text-align: center;
+        }
+        #product{
+        text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -85,20 +97,19 @@
     </div>
 
     <div id="userList">
-        <div id="productListName">
-            <h3>Список ваших товаров: </h3>
-        </div>
-    </div>
 
+            <h3>Список ваших товаров: </h3>
+            <tr  th:each="product : ${allProductsByUser}">
+            <p id="product" th:text="${product.getName}"></p>
+        </tr>
+</div>
     <div id="addProduct">
         <a th:href="@{/product/create}">Добавить продукт</a>
     </div>
-</div>
-
 <div id="allProducts">
     <h3>Новости в товарах</h3>
     <tr th:each="product : ${allProduct}">
-        <a th:text="${product.getName + ' стоимость: ' product.getPrice}"></a>
+        <a th:text="${product.getName + ' стоимость: ' + product.getPrice}"></a>
     </tr>
 </div>
 
