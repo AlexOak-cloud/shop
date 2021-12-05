@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
+<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>CookieShop</title>
@@ -100,7 +100,8 @@
 
             <h3>Список ваших товаров: </h3>
             <tr  th:each="product : ${allProductsByUser}">
-           <a th:href="@{/product/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
+           <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
+                </br>
         </tr>
 </div>
     <div id="addProduct">
@@ -109,7 +110,8 @@
 <div id="allProducts">
     <h3>Новости в товарах</h3>
     <tr th:each="product : ${allProduct}">
-        <a th:href="@{/product/{id}(id=${product.getId})}" th:text="${product.getName + ' стоимость: ' + product.getPrice}"></a>
+        <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName + ' стоимость: ' + product.getPrice}"></a>
+        </br>
     </tr>
 </div>
 

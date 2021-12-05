@@ -3,15 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>CookieShop</title>
+    <style>
+                #nameShop{
+        font-size: 15px;
+        text-align: center;
+        border: 3px solid black;
+        height: 80px;
+        width: 100%;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        }
+        #infoSide{
+        border: 3px solid black;
+        border-radius: 15px;
+        height: 500px;
+        width: 33%;
+        margin-left: 33%;
+        background-color: lightSalmon;
+        }
+        #productName{
+        font-size: 40px;
+        text-align: center;
+        }
+        #desc{
+        text-align: center;
+        }
+        #price{
+        text-align: center;
+        }
+        #category{
+        text-align: center;
+        }
+        #user{
+        text-align: center;
+        }
+        #date{
+        text-align: center;
+        }
+
+
+
+    </style>
 </head>
 <body>
-
-<p th:text="${product.getName}">Name</p>
-<p th:text="${product.getDescription}"></p>
-<p th:text="${product.getPrice}"></p>
-<p th:text="${product.getCategory}"></p>
-<p th:text="${user.getName + ' ' + user.getSecondName}"></p>
-<p th:text="${date}"></p>
+<div id="nameShop">
+    <h1>CookieShop</h1>
+</div>
+<div id="infoSide">
+    <p id="productName" th:text="${product.getName}">Name</p>
+    <p id="desc" th:text="${'Описание: ' +product.getDescription}"></p>
+    <p id="price" th:text="${'Стоимсоть: ' + product.getPrice}"></p>
+    <h3 id="category" th:text="${'Категроия: ' + product.getCategory}"></h3>
+    <div id="user">
+        <a th:href="@{/user/getById/{id}(id=${user.getId})}"
+           th:text="${'Продавец: ' + user.getName + ' ' + user.getSecondName}">Продавец</a>
+    </div>
+    <p id="date" th:text="${'Дата: ' + date}"></p>
+</div>
 
 
 </body>

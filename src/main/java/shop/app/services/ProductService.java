@@ -64,9 +64,9 @@ public class ProductService implements SqlQuery {
         repository.deleteById(id);
     }
 
-    public List<Product> getAllByUser() {
+    public List<Product> getAllByUser(User user) {
+
         try {
-            User user = userService.getAuthUser();
             List<Product> list = new ArrayList<>();
             final Connection connection = dataSource.getConnection();
             final Statement statement = connection.createStatement();
@@ -83,6 +83,7 @@ public class ProductService implements SqlQuery {
                 product.setUser(user);
                 list.add(product);
             }
+            connection.close();
             return list;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -93,8 +94,8 @@ public class ProductService implements SqlQuery {
     public List<Product> getAllByCategory(ProductCategories categories) {
         List<Product> products = new ArrayList<>();
         try {
-            final ResultSet resultSet = dataSource.
-                    getConnection().
+            Connection connection = dataSource.getConnection();
+            final ResultSet resultSet = connection.
                     createStatement().
                     executeQuery(String.format(SqlQuery.getAllCategory, categories.toString()));
             while (resultSet.next()) {
@@ -108,9 +109,11 @@ public class ProductService implements SqlQuery {
                 product.setUser(userService.getAuthUser());
                 products.add(product);
             }
+            connection.close();
             return products;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            connection.close();
             return Collections.emptyList();
         }
     }

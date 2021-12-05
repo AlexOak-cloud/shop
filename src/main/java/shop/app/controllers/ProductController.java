@@ -43,7 +43,7 @@ public class ProductController {
 
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getById/{id}")
     public ModelAndView getById(@PathVariable("id") int id){
         ModelAndView mav = new ModelAndView("/product/getById.html");
         final Product byId = productService.getById(id);
