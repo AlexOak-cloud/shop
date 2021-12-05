@@ -2,11 +2,48 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить товар</title>
+    <style>
+           #nameShop{
+        font-size: 15px;
+        text-align: center;
+        border: 3px solid black;
+        height: 80px;
+        width: 100%;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        }
+        #textAdd{
+        font-size: 30px;
+        text-align: center;
+        }
+
+        #name{
+        text-align: center;
+        }
+        #form{
+        text-align: center;
+        }
+        #description{
+        text-align: center;
+        }
+        #price{
+        text-align: center;
+        }
+
+
+
+
+
+    </style>
+    <title>CookieShop</title>
 </head>
 <body>
-<h3>Добавьте товар</h3>
-<form method="post" th:object="${product}" th:action="@{/product/create}">
+<div id="nameShop">
+    <h1>CookieShop</h1>
+</div>
+
+<h3 id="textAdd" >Добавьте товар</h3>
+<form id="form" method="post" th:object="${product}" th:action="@{/product/create}">
     <label for="name">Название</label>
     <input id="name" th:field="*{name}" type="text" placeholder="name">
     </br>

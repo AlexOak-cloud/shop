@@ -2,8 +2,6 @@
 <meta charset="UTF-8">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-
     <title>CookieShop</title>
     <style>
         #nameShop{
@@ -48,6 +46,7 @@
         font-size: 25px;
         }
         #allProducts{
+           overflow: scroll ;
         border: 1px solid black;
         position: absolute;
         left: 34%;
@@ -60,6 +59,7 @@
         }
 
         #news{
+           overflow: scroll ;
               border: 1px solid black;
               border-radius: 15px;
               left: 66%;
@@ -100,7 +100,7 @@
 
             <h3>Список ваших товаров: </h3>
             <tr  th:each="product : ${allProductsByUser}">
-            <p id="product" th:text="${product.getName}"></p>
+           <a th:href="@{/product/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
         </tr>
 </div>
     <div id="addProduct">
@@ -109,7 +109,7 @@
 <div id="allProducts">
     <h3>Новости в товарах</h3>
     <tr th:each="product : ${allProduct}">
-        <a th:text="${product.getName + ' стоимость: ' + product.getPrice}"></a>
+        <a th:href="@{/product/{id}(id=${product.getId})}" th:text="${product.getName + ' стоимость: ' + product.getPrice}"></a>
     </tr>
 </div>
 

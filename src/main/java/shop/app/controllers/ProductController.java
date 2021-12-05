@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shop.app.entity.User;
 import shop.app.entity.products.Product;
 import shop.app.services.ProductService;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/product")
@@ -41,5 +43,16 @@ public class ProductController {
 
     }
 
+    @GetMapping("/{id}")
+    public ModelAndView getById(@PathVariable("id") int id){
+        ModelAndView mav = new ModelAndView("/product/getById.html");
+        final Product byId = productService.getById(id);
+        final User user = byId.getUser();
+        final String date = byId.getDate().toString();
+        mav.addObject("product",byId);
+        mav.addObject("user",user);
+        mav.addObject("date",date);
+        return mav;
+    }
 }
 
