@@ -37,6 +37,8 @@ public class User implements UserDetails {
     @NotNull
     @Size(min = 1, max = 200)
     private String password;
+    @Transient
+    private String checkPassword;
     @Column(name = "name")
     @NotNull
     @Size(min = 3, max = 10)

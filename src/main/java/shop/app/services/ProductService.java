@@ -35,11 +35,10 @@ public class ProductService implements SqlQuery {
     private DataSource dataSource;
 
 
-    public boolean save(Product product) {
+    public void save(Product product) {
         product.setUser(userService.getAuthUser());
         product.setDate(LocalDate.now());
         repository.save(product);
-        return true;
     }
 
     public Product getById(int id) {
@@ -66,9 +65,8 @@ public class ProductService implements SqlQuery {
 
     public List<Product> getAllByUser(User user) {
 
-        try {
+        try (Connection connection = dataSource.getConnection();) {
             List<Product> list = new ArrayList<>();
-            final Connection connection = dataSource.getConnection();
             final Statement statement = connection.createStatement();
             final ResultSet resultSet = statement.executeQuery(
                     String.format(SqlQuery.getAllProductByUser, user.getId()));
@@ -93,8 +91,7 @@ public class ProductService implements SqlQuery {
 
     public List<Product> getAllByCategory(ProductCategories categories) {
         List<Product> products = new ArrayList<>();
-        try {
-            Connection connection = dataSource.getConnection();
+        try (Connection connection = dataSource.getConnection()) {
             final ResultSet resultSet = connection.
                     createStatement().
                     executeQuery(String.format(SqlQuery.getAllCategory, categories.toString()));
@@ -109,12 +106,33 @@ public class ProductService implements SqlQuery {
                 product.setUser(userService.getAuthUser());
                 products.add(product);
             }
-            connection.close();
             return products;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            connection.close();
             return Collections.emptyList();
         }
     }
+
+    public List<Product> getAllByName(String name){
+        List<Product> products = new ArrayList<>();
+        try(Connection connection = dataSource.getConnection()){
+            final ResultSet resultSet = connection.createStatement().executeQuery(String.format(getAllProductsByName,name));
+            while (resultSet.next()){
+                Product product = new Product();
+                product.setId(Integer.parseInt(resultSet.getString(1)));
+                product.setCategory(resultSet.getString(2));
+                product.setDate(LocalDate.parse(resultSet.getString(3)));
+                product.setDescription(resultSet.getString(4));
+                product.setName(resultSet.getString(5));
+                product.setPrice(Integer.parseInt(resultSet.getString(6)));
+                product.setUser(userService.getAuthUser());
+                products.add(product);
+            }
+            return products;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
 }

@@ -40,8 +40,10 @@
         #date{
         text-align: center;
         }
-
-
+        #back{
+        text-align: center;
+        font-size: 25px;
+        }
 
     </style>
 </head>
@@ -54,13 +56,10 @@
     <p id="desc" th:text="${'Описание: ' +product.getDescription}"></p>
     <p id="price" th:text="${'Стоимсоть: ' + product.getPrice}"></p>
     <h3 id="category" th:text="${'Категроия: ' + product.getCategory}"></h3>
-    <div id="user">
-        <a th:href="@{/user/getById/{id}(id=${user.getId})}"
-           th:text="${'Продавец: ' + user.getName + ' ' + user.getSecondName}">Продавец</a>
-    </div>
+    <div id="user"><a th:href="@{/user/getById/{id}(id=${user.getId})}"
+           th:text="${'Продавец: ' + user.getName + ' ' + user.getSecondName}">Продавец</a></div>
     <p id="date" th:text="${'Дата: ' + date}"></p>
+    <div id="back"><a th:href="@{/user/main}">На свою страницу</a></div>
 </div>
-
-
 </body>
 </html>

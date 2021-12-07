@@ -11,6 +11,7 @@ import shop.app.services.ProductService;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -21,7 +22,7 @@ public class ProductController {
 
     @GetMapping("/create")
     public ModelAndView createGet(@ModelAttribute("product")Product product){
-        ModelAndView mav = new ModelAndView("/product/create.html");
+        ModelAndView mav = new ModelAndView("/views/products/create.html");
         mav.addObject("product", new Product());
         return mav;
     }
@@ -30,7 +31,7 @@ public class ProductController {
     @PostMapping("/create")
     public ModelAndView createPost(@Valid Product product, @Autowired BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            new ModelAndView("/product/create.html");
+            new ModelAndView("/views/products/create.html");
         }
         productService.save(product);
         return new ModelAndView("redirect:/user/main");
@@ -45,13 +46,21 @@ public class ProductController {
 
     @GetMapping("/getById/{id}")
     public ModelAndView getById(@PathVariable("id") int id){
-        ModelAndView mav = new ModelAndView("/product/getById.html");
+        ModelAndView mav = new ModelAndView("/views/products/getById.html");
         final Product byId = productService.getById(id);
         final User user = byId.getUser();
         final String date = byId.getDate().toString();
         mav.addObject("product",byId);
         mav.addObject("user",user);
         mav.addObject("date",date);
+        return mav;
+    }
+
+    @PostMapping("product/search/byName")
+    public ModelAndView searchByName(String name){
+        ModelAndView mav = new ModelAndView("redirect:/views/products/productList.html");
+        final List<Product> products = productService.getAllByName(name);
+        mav.addObject("list", products);
         return mav;
     }
 }
