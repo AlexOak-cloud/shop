@@ -23,18 +23,20 @@ public class Product {
     private int id;
     @Column(name = "name")
     @Size(min = 2, max = 100)
-    @NotNull
+    @NotNull(message = "Поле не может быть пустым")
     private String name;
     @Column(name = "description")
     @Size(min = 1, max = 1000)
-    @NotNull
+    @NotNull(message = "Поле не может быть пустым")
     private String description;
     @Column(name = "price")
-    @NotNull
+    @NotNull(message = "Поле не может быть пустым")
     private int price;
     @Column(name = "date")
+    @NotNull
     private LocalDate date;
     @Column(name = "category")
+    @NotNull
     private String category;
     @OneToOne
     @JoinColumn(name = "user_id")

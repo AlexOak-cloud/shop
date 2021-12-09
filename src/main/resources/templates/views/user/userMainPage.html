@@ -178,6 +178,9 @@
     <div id="username">
         <h1 th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
         <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
     </div>
 
     <div id="userList">
@@ -203,7 +206,7 @@
     </div>
 
     <div id="searchSide">
-          <form th:method ="post" th:action="@{product/search/byName}">
+          <form th:method ="post" th:action="@{/product/search/byName}" >
         <label for="search">Поиск: </label>
             <input id="search" name="search" typeof="text" placeholder="Поиск">
         <input type="submit" value="поиск">

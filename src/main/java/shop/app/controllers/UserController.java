@@ -15,7 +15,6 @@ import shop.app.services.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -24,7 +23,7 @@ public class UserController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/main")
+    @GetMapping("/user/main")
     @ResponseBody
     public ModelAndView userMain() {
         ModelAndView mav = new ModelAndView("/views/user/userMainPage.html");
@@ -34,7 +33,7 @@ public class UserController {
         return mav;
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("/user/getById/{id}")
     public ModelAndView getById(@PathVariable("id")int id){
         ModelAndView mav = new ModelAndView("/views/user/getById.html");
         final User userById = userService.getById(id);

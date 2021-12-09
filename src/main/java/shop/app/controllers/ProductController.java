@@ -56,9 +56,9 @@ public class ProductController {
         return mav;
     }
 
-    @PostMapping("product/search/byName")
+    @PostMapping("search/byName")
     public ModelAndView searchByName(String name){
-        ModelAndView mav = new ModelAndView("redirect:/views/products/productList.html");
+        ModelAndView mav = new ModelAndView("/views/products/productList.html");
         final List<Product> products = productService.getAllByName(name);
         mav.addObject("list", products);
         return mav;

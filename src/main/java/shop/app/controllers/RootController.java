@@ -35,38 +35,13 @@ public class RootController {
     @PostMapping("/registration")
     public ModelAndView registrationPost(@Valid User user,
                                          @Autowired BindingResult bindingResult) {
-       if(!user.getPassword().equals(user.getCheckPassword())){
-           bindingResult.
-                   rejectValue("checkPassword","error.checkPassword",
-                           "Пароли не совпадают");
-       }
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("/views/root/registration");
+            return new ModelAndView("/views/root/registration.html");
+        }
+        if(!user.getPassword().equals(user.getCheckPassword())){
+            return new ModelAndView("/registrationPassword.html");
         }
         userService.saveUser(user);
-        return new ModelAndView("redirect:/login");
+        return new ModelAndView("redirect:/root/login");
     }
-    /*
-    @PostMapping
-    public ModelAndView NameEditPost(@ModelAttribute("customer") Customer customerForm, BindingResult bindingResult){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/account/general/edit");
-        if(customerForm.getName().length() > 18 || customerForm.getName().length() < 2){
-            bindingResult.
-                    rejectValue("name", "error.name",
-                            "Неправильное количество символов. Количество букв должно быть от 2 до 18.");
-        }
-
-        if(customerForm.getSurname().length() > 18 || customerForm.getSurname().length() < 2){
-            bindingResult.
-                    rejectValue("surname", "error.surname",
-                            "Неправильное количество символов. Количество букв должно быть от 2 до 18.");
-        }
-        if(bindingResult.hasErrors()){
-            System.out.println("ошибки");
-            return modelAndView;
-        }
-        return modelAndView;
-    }
-}*/
 }
