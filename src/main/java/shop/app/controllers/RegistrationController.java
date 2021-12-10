@@ -15,8 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class RootController {
-
+public class RegistrationController {
 
     @Autowired
     private UserService userService;
@@ -28,7 +27,7 @@ public class RootController {
 
     @GetMapping("/registration")
     public ModelAndView registrationGet(@ModelAttribute("user") User user) {
-        ModelAndView mav = new ModelAndView("/views/root/registration.html");
+        ModelAndView mav = new ModelAndView("/views/registration/registration.html");
         mav.addObject("user", new User());
         return mav;
     }
@@ -36,38 +35,25 @@ public class RootController {
     @PostMapping("/registration")
     public ModelAndView registrationPost(@Valid User user,
                                          @Autowired BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("/views/root/registration.html");
+            return new ModelAndView("/views/registration/registration.html");
         }
         if(!user.getPassword().equals(user.getCheckPassword())){
-            return new ModelAndView("/views/root/errors/registrationPassword.html");
+            return new ModelAndView("/views/registration/errors/registrationPassword.html");
         }
         List<User> users = userService.allUsers();
         for(User tmp : users){
             if(user.getUsername().equals(tmp.getUsername())){
-                return new ModelAndView("/views/root/errors/registrationUserName.html");
+                return new ModelAndView("/views/registration/errors/registrationUserName.html");
+            }
+        }
+        for(User tmp: users){
+            if(tmp.getPhoneNumber().equals(user.getPhoneNumber())){
+                return new ModelAndView("/views/registration/errors/registrationPhoneNumber.html");
             }
         }
         userService.saveUser(user);
-        return new ModelAndView("redirect:/root/login");
+        return new ModelAndView("redirect:/login/login");
     }
-    /*public void validate(Object target, Errors errors) {
-		SignupForm signupForm = (SignupForm) target;
-
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "username.empty", "Username must not be empty.");
-		String username = signupForm.getUsername();
-		if ((username.length()) > 16) {
-			errors.rejectValue("username", "username.tooLong", "Username must not more than 16 characters.");
-		}
-
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.empty", "Password must not be empty.");
-		if (!(signupForm.getPassword()).equals(signupForm
-				.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword", "confirmPassword.passwordDontMatch", "Passwords don't match.");
-		}
-
-		if( !EmailValidator.getInstance().isValid( signupForm.getEmail() ) ){
-			errors.rejectValue("email", "email.notValid", "Email address is not valid.");
-		}
-	}*/
 }

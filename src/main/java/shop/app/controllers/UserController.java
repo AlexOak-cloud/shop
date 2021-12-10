@@ -24,10 +24,11 @@ public class UserController {
     @Autowired
     private ProductService productService;
 
+
     @GetMapping("/main")
     @ResponseBody
     public ModelAndView userMain() {
-        ModelAndView mav = new ModelAndView("/views/user/userMainPage.html");
+        ModelAndView mav = new ModelAndView("/views/user/main.html");
         mav.addObject("allProduct",productService.sortedListByDate(productService.getAll()));
         mav.addObject("allProductsByUser",productService.getAllByUser(userService.getAuthUser()));
         mav.addObject("user", userService.getAuthUser());
@@ -44,5 +45,6 @@ public class UserController {
         mav.addObject("allProductsByUser",allByUser);
         return mav;
     }
+
 }
 
