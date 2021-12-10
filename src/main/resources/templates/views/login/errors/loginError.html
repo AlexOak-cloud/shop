@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <style>
+  <meta charset="UTF-8">
+  <style>
      #nameShop{
         font-size: 30px;
         text-align: center;
@@ -39,18 +39,19 @@
 <h1 id="nameShop">CookieShop</h1>
 
 <div id="form">
-    <form method="post" th:action="@{/root/login}">
-        <h2 id="login">Вход</h2>
-        <div>
-            <input id="inputName" name="username" type="text">
-            </br>
-            <input id="inputPassword" name="password" type="password">
-            </br>
-            <button id="button" type="submit">Log In</button>
-            <h4><a th:href="@{/registration}">Зарегистрироваться</a></h4>
-        </div>
-    </form>
-    <a id="back" th:href="@{/}">назад</a>
+  <form method="post" th:action="@{/root/login}">
+    <h2 id="login">Вход</h2>
+    <div>
+       <h3>Неверное имя пользователя или пароль</h3>
+      <input id="inputName" name="username" type="text">
+      </br>
+      <input id="inputPassword" name="password" type="password">
+      </br>
+      <button id="button" type="submit">Log In</button>
+      <h4><a th:href="@{/registration}">Зарегистрироваться</a></h4>
+    </div>
+  </form>
+  <a id="back" th:href="@{/}">назад</a>
 </div>
 </body>
 </html>
