@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>CookieShop</title>
+</head>
+<body>
+
+<h3>Результат поиска :</h3>
+
+<tr th:each="product : ${list}">
+
+    <a th:href="@{/product/getById/{id}(id = ${product.getId})}" th:text="${product.getName + ' ' +
+    product.getPrice}"></a>
+    </br>
+</tr>
+
+
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.app.entity.User;
 import shop.app.entity.products.Product;
+import shop.app.entity.products.ProductCategories;
 import shop.app.services.ProductService;
 
 import javax.validation.Valid;
@@ -57,11 +58,33 @@ public class ProductController {
     }
 
     @PostMapping("search/byName")
-    public ModelAndView searchByName(String name){
+    public ModelAndView searchByName(Product product){
         ModelAndView mav = new ModelAndView("/views/products/productList.html");
-        final List<Product> products = productService.getAllByName(name);
+        final List<Product> products = productService.getAllByName(product.getName());
         mav.addObject("list", products);
         return mav;
     }
+
+    @GetMapping("/search/dress")
+    public ModelAndView searchDress(){
+        ModelAndView mav = new ModelAndView("/views/product/getList.html");
+        mav.addObject("list",productService.getAllByCategory(ProductCategories.DRESS));
+        return mav;
+    }
+
+    @GetMapping("/search/technology")
+    public ModelAndView searchTechnology(){
+        ModelAndView mav = new ModelAndView("/views/product/getList.html");
+        mav.addObject("list",productService.getAllByCategory(ProductCategories.TECHNOLOGIES));
+        return mav;
+    }
+
+    @GetMapping("/search/cars")
+    public ModelAndView searchCars(){
+        ModelAndView mav = new ModelAndView("/views/product/getList.html");
+        mav.addObject("list",productService.getAllByCategory(ProductCategories.CARS));
+        return mav;
+    }
+
 }
 

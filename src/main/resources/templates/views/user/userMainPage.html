@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
+<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>CookieShop</title>
@@ -174,13 +174,14 @@
 </div>
 
 <div id="userSide">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 
     <div id="username">
         <h1 th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
+
         <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
     </div>
 
     <div id="userList">
@@ -206,13 +207,29 @@
     </div>
 
     <div id="searchSide">
-          <form th:method ="post" th:action="@{/product/search/byName}" >
-        <label for="search">Поиск: </label>
-            <input id="search" name="search" typeof="text" placeholder="Поиск">
+          <form th:method ="post" th:action="@{/product/search/byName}" th:object="${product}" >
+        <label for="search">Поиск товаров : </label>
+            <input id="search" name="name" typeof="text" th:field="*{name}" placeholder="Поиск">
         <input type="submit" value="поиск">
+              </br>
+              </br>
+              <h3>Поиск по категориям :</h3>
+              </br>
+              </br>
+              <a th:href="@{/product/search/technology}">ТЕХНОЛОГИИ</a>
+              </br>
+              </br>
+              <a th:href="@{/product/search/dress}">ОДЕЖДА</a>
+              </br>
+              </br>
+              <a th:href="@{/product/search/technology}">АВТОМОБИЛИ</a>
+              </br>
+              </br>
           </form>
     </div>
-
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 </div>
 </body>
 </html>
