@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>CookieShop</title>
@@ -173,6 +172,7 @@
     <h1 id="headText">CookieShop</h1>
 </div>
 
+
 <div id="userSide">
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Sign Out"/>
@@ -222,7 +222,7 @@
               <a th:href="@{/product/search/dress}">ОДЕЖДА</a>
               </br>
               </br>
-              <a th:href="@{/product/search/technology}">АВТОМОБИЛИ</a>
+              <a th:href="@{/product/search/cars}">АВТОМОБИЛИ</a>
               </br>
               </br>
           </form>

@@ -12,6 +12,7 @@ import shop.app.entity.User;
 import shop.app.services.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class RootController {
@@ -39,7 +40,13 @@ public class RootController {
             return new ModelAndView("/views/root/registration.html");
         }
         if(!user.getPassword().equals(user.getCheckPassword())){
-            return new ModelAndView("/registrationPassword.html");
+            return new ModelAndView("/views/root/errors/registrationPassword.html");
+        }
+        List<User> users = userService.allUsers();
+        for(User tmp : users){
+            if(user.getUsername().equals(tmp.getUsername())){
+                return new ModelAndView("/views/root/errors/registrationUserName.html");
+            }
         }
         userService.saveUser(user);
         return new ModelAndView("redirect:/root/login");

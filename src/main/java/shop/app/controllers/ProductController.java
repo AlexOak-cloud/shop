@@ -67,21 +67,21 @@ public class ProductController {
 
     @GetMapping("/search/dress")
     public ModelAndView searchDress(){
-        ModelAndView mav = new ModelAndView("/views/product/getList.html");
+        ModelAndView mav = new ModelAndView("/views/products/getList.html");
         mav.addObject("list",productService.getAllByCategory(ProductCategories.DRESS));
         return mav;
     }
 
     @GetMapping("/search/technology")
     public ModelAndView searchTechnology(){
-        ModelAndView mav = new ModelAndView("/views/product/getList.html");
+        ModelAndView mav = new ModelAndView("/views/products/getList.html");
         mav.addObject("list",productService.getAllByCategory(ProductCategories.TECHNOLOGIES));
         return mav;
     }
 
     @GetMapping("/search/cars")
     public ModelAndView searchCars(){
-        ModelAndView mav = new ModelAndView("/views/product/getList.html");
+        ModelAndView mav = new ModelAndView("/views/products/getList.html");
         mav.addObject("list",productService.getAllByCategory(ProductCategories.CARS));
         return mav;
     }

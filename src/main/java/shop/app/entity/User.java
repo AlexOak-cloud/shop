@@ -32,14 +32,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "username")
+    @Column(name = "username",unique = true)
     @NotNull(message = "Поле не может быть пустым")
     @Size(min = 3,max = 10, message = "Длинна поля должна быть от 3 до 10 элемнтов ")
-    @UniqueElements(message = "Пользователь с таким логином уже существует")
     private String username;
     @Column(name = "password")
     @NotNull(message = "Поле не может быть пустым")
-    @Size(min = 5, message = "Длинна поля должна быть от 3-x элементов ")
+    @Size(min = 5, message = "Длинна поля должна быть от 5-x элементов ")
     private String password;
     @Transient
     private String checkPassword;
@@ -53,7 +52,6 @@ public class User implements UserDetails {
     private String secondName;
     @Column(name = "phone_number")
     @NotNull(message = "Поле не может быть пустым")
-    @UniqueElements(message = "Номер телефона уже зарегестрирован")
     @Size(min = 7, max = 12, message = "Длинна поля должна быть от 7 до 12 элементов")
     private String phoneNumber;
     @ManyToMany(fetch = FetchType.EAGER)
