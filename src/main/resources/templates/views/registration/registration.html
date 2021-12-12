@@ -1,93 +1,300 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration </title>
+<html lang="en" dir="ltr">
+
+  <head>
+
+    <meta charset="utf-8">
     <style>
-            #nameShop{
-        font-size: 30px;
-        text-align: center;
-        border: 3px solid black;
-        height: 80px;
-        width: 100%;
-        border-radius: 15px;
-        background-color: LightSalmon;
-        }
-        #form{
-        text-align: center;
-        }
-                #username{
-        text-align: center;
-        }
-                #password{
-        text-align: center;
-        }
-
-        #name{
-        text-align: center;
-        }
-
-        #secondName{
-        text-align: center;
-        }
-              #phoneNumber{
-        text-align: center;
-        }
-            #regist{
-            font-size: 30px;
-            text-align: center;
-
-            }
-               #mainMenu{
-               text-align: center;
-               font-size: 20px;
-
-               }
+      @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 
 
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: 'Montserrat', sans-serif;
+     background: #fff;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     margin: -0px 0 0px;
+ 		 margin-top: 0px;
+     overflow: hidden;
+ }
+
+ h1 {
+     font-weight: bold;
+     margin: 0;
+ }
+
+ p {
+     font-size: 14px;
+     font-weight: 100;
+     line-height: 20px;
+     letter-spacing: .5px;
+     margin: 20px 0 30px;
+ }
+
+ span {
+     font-size: 12px;
+ }
+
+ a {
+     color: #333;
+     font-size: 14px;
+     text-decoration: none;
+     margin: 15px 0;
+ }
 
 
+ .form-container form {
+     background: #fff;
+     display: flex;
+     flex-direction: column;
+     padding:  0 50px;
+     height: 100%;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+
+ }
+
+ .social-container {
+     margin: 20px 0;
+ }
+
+ .social-container a {
+     border: 1px solid #ddd;
+     border-radius: 50%;
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+     margin: 0 5px;
+     height: 40px;
+     width: 40px;
+ }
+
+ .form-container input {
+     background: #eee;
+     border: none;
+     padding: 12px 15px;
+     margin: 8px 0;
+     width: 100%;
+ }
+
+ button {
+     border-radius: 20px;
+     border: 1px solid #ff4b2b;
+     background: #ff445c;
+     color: #000;
+     font-size: 12px;
+     font-weight: bold;
+     padding: 12px 45px;
+     letter-spacing: 1px;
+     margin-top: 20px;
+
+
+ }
+
+ button:active {
+     transform: scale(.95);
+ }
+
+ button:focus {
+     outline: none;
+ }
+
+ button.ghost {
+     background: transparent;
+     border-color: #000;
+
+ }
+
+ .form-container {
+     position: absolute;
+     top: 0;
+     height: 100%;
+
+ }
+
+
+ .sign-in-container {
+     left: 0;
+     width: 50%;
+ }
+
+ .logInText{
+   margin-bottom: 30px;
+ }
+
+ .sign-up-container {
+     left: 0;
+     width: 50%;
+
+     opacity: 0;
+ }
+
+ .overlay-container {
+     position: absolute;
+     top: 0;
+     left: 50%;
+     width: 50%;
+     height: 100%;
+     overflow: hidden;
+   }
+
+ .overlay {
+     background: #ff416c;
+     background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+     color: #000;
+     position: relative;
+     left: -100%;
+     height: 100%;
+     width: 200%;
+
+ }
+
+ .overlay-panel {
+     position: absolute;
+     top: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 0 40px;
+     height: 100%;
+     width: 50%;
+     text-align: center;
+
+
+     color:#000;
+   }
+
+    .overlay-right {
+    right: 0;
+
+   }
+
+    .footer {
+ 	  margin-top: 25px;
+ 	  text-align: center;
+  }
+
+
+    .icons {
+ 	  display: flex;
+ 	  width: 30px;
+ 	  height: 30px;
+ 	  letter-spacing: 15px;
+ 	  align-items: center;
+  }
+
+.mainText{
+    font-size: 45px;
+    background-color: #fff;
+    margin-left: 20px;
+    margin-top: 18px;
+
+}
+
+.avt{
+  margin-top: -48px;
+}
     </style>
-</head>
-<body>
 
-<h1 id="nameShop">CookieShop</h1>
-<h1 id="regist">Регистрация</h1>
+    <script>
+      function checkPass() {
+        var pass1 = document.getElementById("pass1").value;
+        var pass2 = document.getElementById("pass2").value;
+        var ok = true;
+        if (pass1 != pass2) {
 
-<form th:action="@{/registration}" id="form" method="post" th:object="${user}">
+          document.getElementById("pass1").style.borderColor = "#E34234";
+          document.getElementById("pass2").style.borderColor = "#E34234";
 
-    <div><label> Логин : <input type="text" th:field="*{username}" id="username" name="username"/> </label></div>
-    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+          alert("Пороли не совпадают")
 
-    <div><label> Пароль: <input type="password" th:field="*{password}" id="password" name="password"/> </label></div>
-    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        }
+      }
 
-    <div><label>Подтвердите пароль: <input type="password" th:field="*{checkPassword}"
-                                           id="checkPassword" name="checkPassword"/> </label></div>
 
-    <div><label> Ваше Имя: <input type="text" th:field="*{name}" id="name" name="name"/> </label></div>
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </script>
 
-    <div><label> Ваша Фамилия: <input type="text" th:field="*{secondName}" id="secondName" name="secondName"/>
-    </label></div>
-    <span th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></span>
 
-    <div><label> Ваш номер телефона: <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber"/>
-    </label></div>
-    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
 
-    <div><input type="submit" value="Зарегестрироваться"/></div>
-</form>
-</br>
-</br>
-</br>
-</br>
-</br>
-<div id="mainMenu">
-    <a th:href="@{/}">В главное меню</a>
+
+    <title></title>
+
+  </head>
+
+  <body>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+        crossorigin="anonymous">
+
+
+    <div class="main">
+
+
+
+
+
+            <div class="form-container sign-in-container">
+              <div class="mainText">
+                CookieShop
+              </div>
+                <form action="#" class="avt" onsubmit="return checkPass()" method="post">
+                    <h1 class="logInText">Регистрация</h1>
+
+
+                    <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+
+                    <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+
+                    <input type="password" th:field="*{password}" id="pass2" name="password" placeholder="Confing Password"/>
+
+                    <input type="text" th:field="*{name}" id="name" name="name" placeholder="Your name"/>
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+                    <input type="text" th:field="*{secondName}" id="secondName" name="secondName" placeholder="Second name"/>
+                    <span th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></span>
+
+                    <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="Number"/>
+                    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+
+
+
+<button id="button" type="submit">Регистрация</button>
+
+
+                </form>
+            </div>
+            <div class="overlay-container">
+
+
+
+
+                <div class="overlay">
+
+                    <div class="overlay-panel overlay-right">
+
+                        <h1>Привет, Друг!</h1>
+                        <p>Если у тебя есть аккаунта, нажми на кнопку снизу что бы войти в него.</p>
+                        <button class="ghost" id="signUp" th:href="@{/}">Вход</button>
+
+                    </div>
+
+                </div>
+
+            </div>
 </div>
+  </body>
 
-
-</body>
 </html>
