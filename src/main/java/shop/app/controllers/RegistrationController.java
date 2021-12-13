@@ -20,10 +20,7 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    public ModelAndView root() {
-        return new ModelAndView("root.html");
-    }
+
 
     @GetMapping("/registration")
     public ModelAndView registrationGet(@ModelAttribute("user") User user) {

@@ -12,4 +12,9 @@ public class LoginController {
         return new ModelAndView("/login/errors/loginError.html");
     }
 
+    @GetMapping("/")
+    public ModelAndView root() {
+        return new ModelAndView("views/login/login.html");
+    }
+
 }

@@ -221,10 +221,13 @@
     <h1 id="headText">CookieShop</h1>
 
 </div>
-
+ <!-- На этой странице где много место сделаем список всех продуктов отсортированных по дате(Новости в продуктах) -->
+<!--    Это отрисовать -> -> ->   -->
 <div class="inputBox">
-
-  <input type="text"  value="" class="mainInput">
+    <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+  <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
+        <input type="submit" value="Поиск">
+    </form>
 </div>
 
 <div class="lineOpt">
@@ -234,29 +237,33 @@
 
 <div id="userSide">
 
-    <div id="username">
-        <h1  th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
-        <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
-    </div>
+    <!--   Это отрисовать -->
+      <div id="username">
+          <h1  th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
+          <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
+          <form th:action="@{/logout}" method="post">
+              <input type="submit" value="Sign Out"/>
+          </form>
+      </div>
 
-    <div id="userList">
+      <div id="userList">
 
-            <h3>Список ваших товаров: </h3>
-            <tr  th:each="product : ${allProductsByUser}">
-           <a th:href="@{/product/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
-                </br>
-        </tr>
-</div>
-    <div id="addProduct">
+              <h3>Список ваших товаров: </h3>
+              <tr  th:each="product : ${allProductsByUser}">
+             <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
+                  </br>
+          </tr>
+  </div>
+      <div id="addProduct">
 
-      <a href="#" class="botr" th:href="@{/product/create}" id="button">Добавить</a>
+        <a href="#" class="botr" th:href="@{/product/create}" id="button">Добавить</a>
 
-    </div>
+      </div>
 
 
-<div id="news">
+  <div id="news">
 
-</div>
-</div>
-</body>
-</html>
+  </div>
+  </div>
+  </body>
+  </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" dir="ltr">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <style>
@@ -204,6 +204,7 @@
 .avt{
   margin-top: -48px;
 }
+
     </style>
 
     <script>
@@ -222,70 +223,56 @@
       }
 
 
+
     </script>
-
-
 
 
     <title></title>
 
-  </head>
+</head>
 
-  <body>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-        crossorigin="anonymous">
-
-
-    <div class="main">
+<body>
 
 
 
 
-
-            <div class="form-container sign-in-container">
-              <div class="mainText">
-                CookieShop
-              </div>
-                <form action="#" class="avt" onsubmit="return checkPass()" method="post">
-                    <h1 class="logInText">Авторизация</h1>
+<div class="main">
 
 
-                    <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
+    <div class="form-container sign-in-container">
+        <div class="mainText">
+            CookieShop
+        </div>
 
 
-                    <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
+        <form th:action="@{/login}" class="avt" onsubmit="return checkPass()" method="post">
+            <h1 class="logInText">Авторизация</h1>
+
+            <input type="text" id="username" name="username" placeholder="User name"/>
+            <input type="password" id="pass1" name="password" placeholder="Password"/>
+
+            <button id="button" type="submit" value="Вход">Вход</button>
+        </form>
+    </div>
 
 
+    <div class="overlay-container">
 
 
+        <div class="overlay">
 
+            <div class="overlay-panel overlay-right">
 
-<button id="button" type="submit">Вход</button>
-
-
-                </form>
-            </div>
-            <div class="overlay-container">
-
-
-
-
-                <div class="overlay">
-
-                    <div class="overlay-panel overlay-right">
-
-                        <h1>Привет, Друг!</h1>
-                        <p>Если у тебя нету аккаунта, зарегестрируйся. Покупай и продавай вместе с нами.</p>
-                        <button class="ghost" id="signUp" th:href="@{/}">Регистрация</button>
-
-                    </div>
-
-                </div>
+                <h1>Привет, Друг!</h1>
+                <p>Если у тебя нету аккаунта, зарегестрируйся. Покупай и продавай вместе с нами.</p>
+                <button class="ghost" id="signUp" th:href="@{/}">Регистрация</button>
 
             </div>
+
+        </div>
+
+    </div>
 </div>
-  </body>
+</body>
 
 </html>
