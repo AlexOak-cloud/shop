@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CookieShop</title>
+</head>
+<body>
+
+<form th:method="post" th:object="${message}" th:action="@{/message/chat/{id}(id=${recipientUser.getId})}">
+    <label for="message">Message</label>
+    <input id="message" th:field="*{message}" type="text" placeholder="message">
+    <input type="submit" value="send">
+</form>
+
+
+
+</body>
+</html>

@@ -57,7 +57,9 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "t_msg",joinColumns = @JoinColumn(name = "user_id"))
     private Set<Message> messages;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

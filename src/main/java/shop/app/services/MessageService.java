@@ -1,46 +1,47 @@
 package shop.app.services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
+import shop.app.appUtills.SqlQuery;
 import shop.app.entity.Message;
-import shop.app.repository.MessagesRepositories;
+import shop.app.repository.MessageRepository;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @EnableJpaRepositories
-public class MessageService {
+public class MessageService implements SqlQuery {
 
     @Autowired
-    private MessagesRepositories repositories;
+    private MessageRepository repository;
 
-    public List<Message> findAll() {
-        return repositories.findAll();
+    public void save(Message message) {
+        repository.save(message);
     }
 
-
-    public Message getById(Integer id) {
-        return repositories.getById(id);
+    public List<Message> getAll() {
+        return repository.findAll();
     }
 
-    public <S extends Message> S save(S entity) {
-        return repositories.save(entity);
+    public Message getById(int id) {
+        return repository.getById(id);
     }
 
-
-    public Optional<Message> findById(Integer integer) {
-        return findById(integer);
+    public void deleteById(int id) {
+        repository.deleteById(id);
     }
 
-
-    public void deleteById(Integer id) {
-        repositories.deleteById(id);
+    public void delete(Message message) {
+        repository.delete(message);
     }
 
-
-    public void delete(Message entity) {
-        repositories.delete(entity);
+    public List<Message> sortedListByDate(List<Message> list) {
+        list.sort(Comparator.comparing(Message::getDate));
+        Collections.reverse(list);
+        return list;
     }
 }
