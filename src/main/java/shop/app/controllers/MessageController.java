@@ -10,8 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import shop.app.entity.Message;
 import shop.app.services.MessageService;
 import shop.app.services.UserService;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Controller
@@ -42,6 +40,4 @@ public class MessageController {
         messageService.save(message);
         return new ModelAndView("redirect:/message/chat/{id}");
     }
-
-
 }

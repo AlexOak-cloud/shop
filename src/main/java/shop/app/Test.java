@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 import java.sql.*;
 
 
-@Repository
 public class Test {
 
   

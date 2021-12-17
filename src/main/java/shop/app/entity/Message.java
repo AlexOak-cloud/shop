@@ -29,12 +29,11 @@ public class Message {
     @NotNull
     private boolean isRead;
     @ManyToOne
-    @JoinColumn(name = "sender_user_id_id")
+    @JoinColumn(name = "sender_user_id")
     private User senderUser;
     @ManyToOne
-    @JoinColumn(name = "recipient_user_id_id")
+    @JoinColumn(name = "recipient_user_id")
     private User recipientUser;
-
 
     /**
      CREATE TABLE usr_message(id INT PRIMARY KEY AUTO_INCREMENT,
