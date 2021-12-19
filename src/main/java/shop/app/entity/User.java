@@ -56,8 +56,7 @@ public class User implements UserDetails {
     private String phoneNumber;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Message> messages;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
