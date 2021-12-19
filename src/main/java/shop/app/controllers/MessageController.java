@@ -21,23 +21,25 @@ public class MessageController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/message/chat/{id}")
+    @GetMapping("/message/chat/{recipientId}")
     public ModelAndView chatGet(@PathVariable("recipientId") int id,
                                 @ModelAttribute("message") Message message) {
         ModelAndView mav = new ModelAndView("/views/message/chat.html");
-        mav.addObject("message", new Message());
+        mav.addObject("message ", new Message());
         mav.addObject("recipientUser", userService.getById(id));
         return mav;
     }
 
-    @PostMapping("/message/chat/{id}")
+    @PostMapping("/message/chat/{recipientId}")
     public ModelAndView chatPost(@PathVariable("recipientId") int id,
                                  Message message) {
+        ModelAndView mav = new ModelAndView("redirect:/message/chat/{recipientId}");
+        mav.addObject("recipientUser",userService.getById(id));
         message.setDate(LocalDateTime.now());
         message.setSenderUser(userService.getAuthUser());
         message.setRecipientUser(userService.getById(id));
         message.setRead(false);
         messageService.save(message);
-        return new ModelAndView("redirect:/message/chat/{id}");
+        return mav;
     }
 }

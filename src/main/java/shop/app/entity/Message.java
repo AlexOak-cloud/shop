@@ -21,7 +21,7 @@ public class Message {
     private int id;
     @Column(name = "message")
     @NotNull(message = "Сообщение не может быть пустым")
-    private String message;
+    private String content;
     @NotNull
     @Column(name = "date_msg")
     private LocalDateTime date;

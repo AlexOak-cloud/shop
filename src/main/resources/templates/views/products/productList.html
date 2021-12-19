@@ -121,7 +121,7 @@
 
 <tr th:each="product : ${list}">
     <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName +
-   ' ' + product.getPrice }">wef</a>
+   ' ' + product.getPrice + ' ' + product.getUser}">wef</a>
     ></a>
     </br>
 

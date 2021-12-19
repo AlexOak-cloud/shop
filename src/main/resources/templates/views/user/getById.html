@@ -63,7 +63,7 @@
 <div id="page">
     <h1 id="username" th:text="${user.getName + ' ' + user.getSecondName}">Name SecondName</h1>
     <p id="phone" th:text="${'PhoneNumber: ' + user.getPhoneNumber}">PhoneNumber: 123112312</p>
-    <a id="message">Написать сообщение</a>
+    <a id="message" th:href="@{/message/chat/{id}(id=${user.getId})}">Написать сообщение</a>
 
     <div id="userProducts">
         <h3>Остальные товары этого продавца</h3>
