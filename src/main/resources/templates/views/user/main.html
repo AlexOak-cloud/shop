@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta charset="UTF-8" >
+<meta charset="UTF-8">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>CookieShop</title>
@@ -76,6 +76,7 @@
   color: #000;
   font-size: 13px;
   font-weight: bold;
+  text-align: center;
   width: 100px;
   height: 43px;
   letter-spacing: 1px;
@@ -124,10 +125,6 @@
         width: 33%;
         text-align: center;
         font-size: 25px;
-        margin-top: 35px;
-
-
-
 
         }
         .productListName{
@@ -234,68 +231,61 @@
 }
 
 
+
     </style>
 </head>
 <body>
 <div class="mainDiv">
 
-<div class="Header">
+    <div class="Header">
+        <div class="nameShop">
+            <h1 class="headText">CookieShop</h1>
+        </div>
+        <div class="inputBox">
+            <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+                <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
+                <input type="submit"  value="Поиск" class="butSearch">Поиск</input>
+            </form>
+        </div>
+    </div>
 
 
-<div class="nameShop">
-    <h1 class="headText">CookieShop</h1>
 
+    <div class="lineOpt">
+        <hr class="line">
+    </div>
+
+
+    <div class="userSide">
+
+
+        <div class="username">
+            <h1 th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
+            <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Выход">
+            </form>
+        </div>
+
+        <div class="userList">
+
+            <h3>Список ваших товаров: </h3>
+            <tr th:each="product : ${allProductsByUser}">
+                <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
+                </br>
+            </tr>
+        </div>
+        <div class="addProduct">
+
+            <a class="botr" th:href="@{/product/create}">Добавить</a>
+
+        </div>
+
+
+        <div class="news">
+
+        </div>
+    </div>
 </div>
-
-<div class="inputBox">
-    <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
-  <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
-    </form>
-
-
-</div>
-<div class="searchBox">
-
-
-      <button type="button" name="button"  class="butSearch">Поиск</button>
-      </div>
-      </div>
-
-<div class="lineOpt">
-<hr class="line">
-</div>
-
-
-<div class="userSide">
-
-
-      <div class="username">
-          <h1  th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
-          <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
-          <form th:action="@{/logout}" method="post">
-              <a type="submit" value="Sign Out"/> Выход </a>
-          </form>
-      </div>
-
-      <div class="userList">
-
-              <h3>Список ваших товаров: </h3>
-              <tr  th:each="product : ${allProductsByUser}">
-             <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName}">product</a>
-                  </br>
-          </tr>
-  </div>
-      <div class="addProduct">
-
-          <a class="botr" th:href="@{/product/create}" >Добавить</a>
-
-      </div>
-
-
-  <div class="news">
-
-  </div>
-  </div>
-</div>
-  </body>
-  </html>
+</body>
+</html>
