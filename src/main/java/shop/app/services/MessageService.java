@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,6 +33,8 @@ public class MessageService implements SqlQuery {
     @Autowired
     private DataSource dataSource;
 
+
+
     public void save(Message message) {
         messageRepository.save(message);
     }
@@ -40,22 +43,39 @@ public class MessageService implements SqlQuery {
         return messageRepository.findAll();
     }
 
-    public List<Message> getChat(User user) {
+    public List<Message> getChat(User senderUser, User recipientUser) {
         List<Message> rtnList = new ArrayList<>();
         try (final Statement statement = dataSource.getConnection().createStatement()) {
-            ResultSet resultSet = statement.executeQuery(String.format(getChatBySender,user.getId()));
-            while (resultSet.next()){
+            ResultSet resultSet = statement.executeQuery(String.format(
+                    getChatByRecipient, recipientUser.getId(), senderUser.getId()));
+            while (resultSet.next()) {
                 Message message = new Message();
                 message.setId(resultSet.getInt(1));
                 message.setContent(resultSet.getString(2));
-message.setDate(LocalDateTime.parse(resultSet.getDate(3)));
-
+                message.setDate(LocalDateTime.parse(resultSet.getString(3),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")));
+                message.setRead(resultSet.getBoolean(4));
+                message.setRecipientUser(userService.getById(resultSet.getInt(5)));
+                message.setSenderUser(userService.getById(resultSet.getInt(6)));
+                rtnList.add(message);
             }
-
+            return sortedListByDate(rtnList);
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return Collections.emptyList();
         }
+    }
 
+    public List<String> formatChat(List<Message> list) {
+        List<String> rtnList = new ArrayList<>();
+        for (Message tmp : list) {
+            if (tmp.getSenderUser().getId() == userService.getAuthUser().getId()) {
+                rtnList.add("Вы: \n" + tmp.getContent() + "\n" + tmp.getDate());
+            } else {
+                rtnList.add(tmp.getSenderUser().getName() + ": \n" + tmp.getContent()+ "\n" + tmp.getDate());
+            }
+        }
+        return rtnList;
     }
 
     public Message getById(int id) {

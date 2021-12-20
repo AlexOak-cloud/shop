@@ -12,6 +12,12 @@
     <input type="submit" value="send">
 </form>
 
+<tr  th:each="message : ${chatList}">
+
+    <p th:text="${message}">message</p>
+
+</tr>
+
 
 
 </body>

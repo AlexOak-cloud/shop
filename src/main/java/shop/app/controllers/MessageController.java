@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import shop.app.entity.Message;
+import shop.app.entity.User;
 import shop.app.services.MessageService;
 import shop.app.services.UserService;
 import java.time.LocalDateTime;
@@ -24,9 +25,12 @@ public class MessageController {
     @GetMapping("/message/chat/{recipientId}")
     public ModelAndView chatGet(@PathVariable("recipientId") int id,
                                 @ModelAttribute("message") Message message) {
+        User sender  = userService.getById(id);
         ModelAndView mav = new ModelAndView("/views/message/chat.html");
         mav.addObject("message ", new Message());
-        mav.addObject("recipientUser", userService.getById(id));
+        mav.addObject("recipientUser", sender);
+        mav.addObject("chatList",messageService.formatChat(
+                messageService.getChat(sender,userService.getAuthUser())));
         return mav;
     }
 

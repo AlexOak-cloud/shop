@@ -222,15 +222,8 @@
 
 <tr th:each="product : ${list}">
     <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName +
-<<<<<<< HEAD
-   ' ' + product.getPrice + ' ' + product.getUser}">wef</a>
-    ></a>
+ ' ' + product.getPrice + ' ' + product.getUser}">wef</a>>
     </br>
-=======
-   ' ' + product.getPrice }"></a>
-      </a>
->>>>>>> f602d8a5e31c3cb64c3142109783b6d4e30c3f97
-
    <p class="hName"> Результат поиска </p>
    <div class="pText">
 
@@ -306,7 +299,7 @@
           </div>
 
     <div class="persChat">
-              <button type="button" name="button" class="butChat">Связаться</button>
+              <a type="button" name="button" class="butChat">Связаться</a>
 
     </div>
       </div>
