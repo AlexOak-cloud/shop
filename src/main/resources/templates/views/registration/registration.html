@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" dir="ltr">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <style>
@@ -205,7 +205,6 @@
   margin-top: -48px;
 }
     </style>
-
     <script>
       function checkPass() {
         var pass1 = document.getElementById("pass1").value;
@@ -220,75 +219,64 @@
 
         }
       }
-
-
     </script>
-
-
-
-
     <title></title>
+</head>
 
-  </head>
-
-  <body>
-
-
-    <div class="main">
+<body>
 
 
-
-            <div class="form-container sign-in-container">
-              <div class="mainText">
-                CookieShop
-              </div>
-                <form action="#" class="avt" onsubmit="return checkPass()" method="post">
-                    <h1 class="logInText">Регистрация</h1>
+<div class="main">
 
 
-                    <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
-                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
-
-                    <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
-                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
-
-                    <input type="password" th:field="*{password}" id="pass2" name="password" placeholder="Confing Password"/>
-
-                    <input type="text" th:field="*{name}" id="name" name="name" placeholder="Your name"/>
-                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-
-                    <input type="text" th:field="*{secondName}" id="secondName" name="secondName" placeholder="Second name"/>
-                    <span th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></span>
-
-                    <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="Number"/>
-                    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+    <div class="form-container sign-in-container">
+        <div class="mainText">
+            CookieShop
+        </div>
+        <form th:action="@{/registration}" class="avt"
+              th:object=${user}" onsubmit="return checkPass()" th:method="post">
+            <h1 class="logInText">Регистрация</h1>
 
 
+            <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
 
-<button id="button" type="submit">Регистрация</button>
+            <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+
+            <input type="password" th:field="*{password}" id="pass2" name="password" placeholder="Confing Password"/>
+
+            <input type="text" th:field="*{name}" id="name" name="name" placeholder="Your name"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <input type="text" th:field="*{secondName}" id="secondName" name="secondName" placeholder="Second name"/>
+            <span th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></span>
+
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="Number"/>
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
 
 
-                </form>
-            </div>
-            <div class="overlay-container">
+            <button id="button" type="submit">Регистрация</button>
 
 
+        </form>
+    </div>
+    <div class="overlay-container">
 
 
-                <div class="overlay">
+        <div class="overlay">
 
-                    <div class="overlay-panel overlay-right">
+            <div class="overlay-panel overlay-right">
 
-                        <h1>Привет, Друг!</h1>
-                        <p>Если у тебя есть аккаунта, нажми на кнопку снизу что бы войти в него.</p>
-                        <button class="ghost" id="signUp" th:href="@{/}">Вход</button>
-
-                    </div>
-
-                </div>
+                <h1>Привет, Друг!</h1>
+                <p>Если у тебя есть аккаунта, нажми на кнопку снизу что бы войти в него.</p>
+                <button class="ghost" id="signUp" th:href="@{/}">Вход</button>
 
             </div>
+
+        </div>
+
+    </div>
 </div>
-  </body>
-
+</body>
 </html>

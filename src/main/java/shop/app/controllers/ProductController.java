@@ -38,12 +38,6 @@ public class ProductController {
         return new ModelAndView("redirect:/user/main");
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ModelAndView delete(@PathVariable("id") int id){
-        productService.deleteById(id);
-        return new ModelAndView("redirect:/user/main");
-
-    }
 
     @GetMapping("/getById/{id}")
     public ModelAndView getById(@PathVariable("id") int id){

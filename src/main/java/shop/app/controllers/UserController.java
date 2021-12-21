@@ -22,7 +22,6 @@ public class UserController {
 
 
     @GetMapping("/user/main")
-    @ResponseBody
     public ModelAndView userMain() {
         ModelAndView mav = new ModelAndView("/views/user/main.html");
         mav.addObject("allProduct",productService.sortedListByDate(productService.getAll()));

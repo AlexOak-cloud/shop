@@ -14,6 +14,7 @@ import shop.app.entity.products.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -56,6 +57,11 @@ public class User implements UserDetails {
     private String phoneNumber;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+    @Column(name = "is_blocked")
+    private boolean isBlocked;
+    @Column(name = "email")
+    @Email(message = "Введите корректный email-адресс")
+    private String email;
 
 
     @Override
