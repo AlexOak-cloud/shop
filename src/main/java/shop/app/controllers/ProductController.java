@@ -31,9 +31,6 @@ public class ProductController {
 
     @PostMapping("/create")
     public ModelAndView createPost(@Valid Product product, @Autowired BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            new ModelAndView("/views/products/create.html");
-        }
         productService.save(product);
         return new ModelAndView("redirect:/user/main");
     }

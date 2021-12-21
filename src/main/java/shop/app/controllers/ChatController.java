@@ -2,10 +2,7 @@ package shop.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shop.app.entity.Message;
 import shop.app.entity.User;
@@ -14,7 +11,8 @@ import shop.app.services.UserService;
 import java.time.LocalDateTime;
 
 @Controller
-public class MessageController {
+@RequestMapping("/message")
+public class ChatController {
 
     @Autowired
     private MessageService messageService;
@@ -22,7 +20,7 @@ public class MessageController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/message/chat/{recipientId}")
+    @GetMapping("/chat/{recipientId}")
     public ModelAndView chatGet(@PathVariable("recipientId") int id,
                                 @ModelAttribute("message") Message message) {
         User sender  = userService.getById(id);
@@ -34,10 +32,10 @@ public class MessageController {
         return mav;
     }
 
-    @PostMapping("/message/chat/{recipientId}")
+    @PostMapping("/chat/{recipientId}")
     public ModelAndView chatPost(@PathVariable("recipientId") int id,
                                  Message message) {
-        ModelAndView mav = new ModelAndView("redirect:/message/chat/{recipientId}");
+        ModelAndView mav = new ModelAndView("redirect:/chat/{recipientId}");
         mav.addObject("recipientUser",userService.getById(id));
         message.setDate(LocalDateTime.now());
         message.setSenderUser(userService.getAuthUser());
