@@ -122,7 +122,7 @@
           }
 
           .pText {
-            height: 400px;
+            height: 50vh;
             word-wrap: break-word;
             font-family: reza;
             font-size: 19px;
@@ -222,7 +222,7 @@
 
 <tr th:each="product : ${list}">
     <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName +
- ' ' + product.getPrice + ' ' + product.getUser}">wef</a>>
+ ' ' + product.getPrice + ' ' + product.getUser}"></a>
     </br>
    <p class="hName"> Результат поиска </p>
    <div class="pText">
