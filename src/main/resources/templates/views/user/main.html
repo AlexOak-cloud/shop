@@ -58,9 +58,6 @@
   margin-top: 30px;
 }
 
-.lineOpt{
-  margin-top: 110px;
-}
 
 .searchBox{
   padding-right: 60px;
@@ -69,21 +66,6 @@
 
 }
 
-.butSearch {
-  border-radius: 50px;
-  border: 1px solid #000;
-  background: #ff445c;
-  color: #000;
-  font-size: 13px;
-  font-weight: bold;
-  text-align: center;
-  width: 100px;
-  height: 43px;
-  letter-spacing: 1px;
-  margin-top: 20px;
-  float: right;
-
-}
 
   ::-webkit-scrollbar {
     width: 5px;
@@ -183,15 +165,36 @@
         .product{
           text-align: center;
         }
-        .button{
-          font-family: TwoFart;
 
+        .searchButton{
+          float: right;
+          background-color: #ff445c;
+          width: 100px;
+          height: 35px;
+          margin-top: 43px;
+          margin-right: 58px;
+          border-radius: 15px;
         }
+
+        .exit{
+          border:none;
+          background-image:none;
+          background-color:transparent;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+          font-family: TwoFart;
+          font-size: 23px;
+        }
+
 
 
         * {
           margin: 0;
           padding: 0;
+        }
+        a.botrSearch {
+          width: 20;
         }
 
         a.botr{
@@ -202,7 +205,7 @@
           padding-top:19px;
           border:1px solid #000;
           margin: 20px auto;
-          font-family: 'Dosis', sans;
+          font-family: 'Dosis1', sans;
           font-size: 18px;
           font-weight:200;
           color:#000;
@@ -244,9 +247,13 @@
         <div class="inputBox">
             <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
                 <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
-                <input type="submit"  value="Поиск" class="butSearch">Поиск</input>
+
             </form>
+
+
         </div>
+        <!-- Стилизацию кнопки потом переделаю, не красиво смотрить, а так все готово, осталось только расставить контрелеры -->
+        <button type="button" name="button" class="searchButton">Поиск</button>
     </div>
 
 
@@ -263,7 +270,7 @@
             <h1 th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
             <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
             <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Выход">
+                <input type="submit" value="Выход" class="exit">
             </form>
         </div>
 

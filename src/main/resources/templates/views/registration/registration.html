@@ -1,7 +1,215 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" dir="ltr" xmlns="http://www.w3.org/1999/html">
+=======
+<html xmlns:th="http://www.thymeleaf.org" lang="en" dir="ltr">
+
+>>>>>>> c9b535331eeddc05788198772a2b996174378b87
 <head>
+
     <meta charset="utf-8">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+
+
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: 'Montserrat', sans-serif;
+     background: #fff;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     margin: -0px 0 0px;
+ 		 margin-top: 0px;
+     overflow: hidden;
+ }
+
+ h1 {
+     font-weight: bold;
+     margin: 0;
+ }
+
+ p {
+     font-size: 14px;
+     font-weight: 100;
+     line-height: 20px;
+     letter-spacing: .5px;
+     margin: 20px 0 30px;
+ }
+
+ span {
+     font-size: 12px;
+ }
+
+ a {
+     color: #333;
+     font-size: 14px;
+     text-decoration: none;
+     margin: 15px 0;
+ }
+
+
+ .form-container form {
+     background: #fff;
+     display: flex;
+     flex-direction: column;
+     padding:  0 50px;
+     height: 100%;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+
+ }
+
+ .social-container {
+     margin: 20px 0;
+ }
+
+ .social-container a {
+     border: 1px solid #ddd;
+     border-radius: 50%;
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+     margin: 0 5px;
+     height: 40px;
+     width: 40px;
+ }
+
+ .form-container input {
+     background: #eee;
+     border: none;
+     padding: 12px 15px;
+     margin: 8px 0;
+     width: 100%;
+ }
+
+ button {
+     border-radius: 20px;
+     border: 1px solid #ff4b2b;
+     background: #ff445c;
+     color: #000;
+     font-size: 12px;
+     font-weight: bold;
+     padding: 12px 45px;
+     letter-spacing: 1px;
+     margin-top: 20px;
+
+
+ }
+
+ button:active {
+     transform: scale(.95);
+ }
+
+ button:focus {
+     outline: none;
+ }
+
+ button.ghost {
+     background: transparent;
+     border-color: #000;
+
+ }
+
+ .form-container {
+     position: absolute;
+     top: 0;
+     height: 100%;
+
+ }
+
+
+ .sign-in-container {
+     left: 0;
+     width: 50%;
+ }
+
+ .logInText{
+   margin-bottom: 30px;
+ }
+
+ .sign-up-container {
+     left: 0;
+     width: 50%;
+
+     opacity: 0;
+ }
+
+ .overlay-container {
+     position: absolute;
+     top: 0;
+     left: 50%;
+     width: 50%;
+     height: 100%;
+     overflow: hidden;
+   }
+
+ .overlay {
+     background: #ff416c;
+     background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+     color: #000;
+     position: relative;
+     left: -100%;
+     height: 100%;
+     width: 200%;
+
+ }
+
+ .overlay-panel {
+     position: absolute;
+     top: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 0 40px;
+     height: 100%;
+     width: 50%;
+     text-align: center;
+
+
+     color:#000;
+   }
+
+    .overlay-right {
+    right: 0;
+
+   }
+
+    .footer {
+ 	  margin-top: 25px;
+ 	  text-align: center;
+  }
+
+
+    .icons {
+ 	  display: flex;
+ 	  width: 30px;
+ 	  height: 30px;
+ 	  letter-spacing: 15px;
+ 	  align-items: center;
+  }
+
+.mainText{
+    font-size: 45px;
+    background-color: #fff;
+    margin-left: 20px;
+    margin-top: 18px;
+
+}
+
+.avt{
+  margin-top: -48px;
+}
+
+    </style>
     <title>CookieShop</title>
     <script>
 
@@ -95,9 +303,16 @@ input:focus:invalid {
     </style>
 </head>
 <body>
-<h1>Регистрация</h1>
+<div class="main">
+    <div class="form-container sign-in-container">
+        <div class="mainText">
+            CookieShop
+        </div>
 
+            <form th:action="@{/login}" class="avt" method="post">
+                <h1 class="logInText">Регистрация</h1>
 <form th:action="@{/registration}" th:object="${user}" th:method="post">
+<<<<<<< HEAD
 
     <input id="username"
            required
@@ -122,7 +337,36 @@ input:focus:invalid {
     <input type="submit" value="Регистрация">
 </form>
 <a th:href="@{/}">Назад</a>
+=======
+                <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
+                <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
+                <input type="name" th:field="*{name}" name="name" value="" placeholder="Name">
+                <input type="surname" th:field="*{secondName}" name="surname" value="" placeholder="Surname">
+                <input type="number" th:field="*{phoneNumber}" name="number" value="" placeholder="Number">
+                <input type="mail" th:field="*{email}" name="mail" value="" placeholder="Mail">
+>>>>>>> c9b535331eeddc05788198772a2b996174378b87
 
 
+                <button  id="button" type="submit" value="Вход">Регистрация</button>
+                  </form>
+
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+
+                <div class="overlay-panel overlay-right">
+
+                    <h1>Привет, Друг!</h1>
+                    <p>Если у тебя уже есть аккаунт, войди в него.</p>
+                    <form th:action="@{/registration}">
+                        <button class="ghost" id="signUp">Вход</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
