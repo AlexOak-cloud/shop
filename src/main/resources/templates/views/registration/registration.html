@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" dir="ltr" xmlns="http://www.w3.org/1999/html">
-=======
-<html xmlns:th="http://www.thymeleaf.org" lang="en" dir="ltr">
-
->>>>>>> c9b535331eeddc05788198772a2b996174378b87
+<html lang="en" xmlns:th="http://www.thymeleaf.org" dir="ltr">
 <head>
-
     <meta charset="utf-8">
     <style>
       @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-
-
  * {
      box-sizing: border-box;
  }
@@ -209,6 +200,9 @@
   margin-top: -48px;
 }
 
+
+
+
     </style>
     <title>CookieShop</title>
     <script>
@@ -247,6 +241,9 @@ function showError() {
 
   usernameError.className = 'error active';
 }
+
+
+
 
     </script>
     <style>
@@ -300,6 +297,9 @@ input:focus:invalid {
 .error.active {
   padding: 0.3em;
 }
+
+
+
     </style>
 </head>
 <body>
@@ -309,64 +309,104 @@ input:focus:invalid {
             CookieShop
         </div>
 
-            <form th:action="@{/login}" class="avt" method="post">
-                <h1 class="logInText">Регистрация</h1>
-<form th:action="@{/registration}" th:object="${user}" th:method="post">
-<<<<<<< HEAD
-
-    <input id="username"
-           required
-           minlength="3"
-           maxlength="18"
-           type="text"
-           th:field="*{username}"
-           placeholder="Логин">
-    <span class="error" aria-live="polite"></span>
+        <form th:action="@{/login}" class="avt" method="post">
+            <h1 class="logInText">Регистрация</h1>
+            <form th:action="@{/registration}" th:object="${user}" th:method="post">
 
 
-    <input type="password" th:field="*{password}" placeholder="Пароль">
-    </br>
-    <input type="text" th:field="*{name}" placeholder="Ваше имя">
-    </br>
-    <input type="text" th:field="*{secondName}" placeholder="Фамилия">
-    </br>
-    <input type="text" th:field="*{phoneNumber}" placeholder="Номер телефона">
-    </br>
-    <input type="text" th:field="*{email}" placeholder="Электронная почта">
-    </br>
-    <input type="submit" value="Регистрация">
-</form>
-<a th:href="@{/}">Назад</a>
-=======
-                <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
-                <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
-                <input type="name" th:field="*{name}" name="name" value="" placeholder="Name">
-                <input type="surname" th:field="*{secondName}" name="surname" value="" placeholder="Surname">
-                <input type="number" th:field="*{phoneNumber}" name="number" value="" placeholder="Number">
-                <input type="mail" th:field="*{email}" name="mail" value="" placeholder="Mail">
->>>>>>> c9b535331eeddc05788198772a2b996174378b87
+                <input id="username"
+                       name="username"
+                       required
+                       minlength="3"
+                       maxlength="18"
+                       type="text"
+                       th:field="*{username}"
+                       placeholder="Логин">
+                <span class="error" aria-live="polite"></span>
+                </br>
 
+                <input id="password"
+                       type="password"
+                       required
+                       minlength="3"
+                       maxlength="18"
+                       name="password"
+                       th:field="*{password}"
+                       placeholder="Пароль">
+                <span class="error" aria-live="polite"></span>
+                </br>
 
-                <button  id="button" type="submit" value="Вход">Регистрация</button>
-                  </form>
+                <input id="name"
+                       name="name"
+                       type="text"
+                       required
+                       minlength="3"
+                       maxlength="18"
+                       th:field="*{name}"
+                       placeholder="Ваше имя">
+                <span class="error" aria-live="polite"></span>
+                </br>
 
+                <input id="secondName"
+                       name="surname"
+                       type="text"
+                       required
+                       minlength="3"
+                       maxlength="18"
+                       th:field="*{secondName}"
+                       placeholder="Фамилия">
+                <span class="error" aria-live="polite"></span>
+                </br>
+
+                <input id="phoneNumber"
+                       name="number"
+                       type="number"
+                       required
+                       minlength="7"
+                       maxlength="17"
+                       th:field="*{phoneNumber}"
+                       placeholder="Номер телефона">
+                <span class="error" aria-live="polite"></span>
+                </br>
+
+                <input id="email"
+                       name="mail"
+                       type="text"
+                       th:field="*{email}"
+                       placeholder="Электронная почта">
+                </br>
+                <input type="submit" value="Регистрация">
             </form>
-        </div>
+            <a th:href="@{/}">Назад</a>
 
-        <div class="overlay-container">
-            <div class="overlay">
 
-                <div class="overlay-panel overlay-right">
+            <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
+            <input type="name" th:field="*{name}" name="name" value="" placeholder="Name">
+            <input type="surname" th:field="*{secondName}" name="surname" value="" placeholder="Surname">
+            <input type="number" th:field="*{phoneNumber}" name="number" value="" placeholder="Number">
+            <input type="mail" th:field="*{email}" name="mail" value="" placeholder="Mail">
 
-                    <h1>Привет, Друг!</h1>
-                    <p>Если у тебя уже есть аккаунт, войди в него.</p>
-                    <form th:action="@{/registration}">
-                        <button class="ghost" id="signUp">Вход</button>
-                    </form>
-                </div>
+
+            <button id="button" type="submit" value="Вход">Регистрация</button>
+        </form>
+
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+
+            <div class="overlay-panel overlay-right">
+
+                <h1>Привет, Друг!</h1>
+                <p>Если у тебя уже есть аккаунт, войди в него.</p>
+                <form th:action="@{/registration}">
+                    <button class="ghost" id="signUp">Вход</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
