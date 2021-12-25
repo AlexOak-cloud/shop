@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import shop.app.services.UserService;
 
 @Configuration
-@EnableWebSecurity
+
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Перенарпавление на главную страницу после успешного входа
                 .defaultSuccessUrl("/user/main")
                 .permitAll()
+                .failureUrl("/loginError")
                 .and()
                 .logout()
                 .permitAll()

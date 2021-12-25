@@ -21,14 +21,14 @@ public class RootController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login?error")
-    public ModelAndView errorLogin() {
-        return new ModelAndView("/login/errors/loginError.html");
-    }
-
     @GetMapping("/")
     public ModelAndView root() {
         return new ModelAndView("views/login/login.html");
+    }
+
+    @GetMapping("/loginError")
+    public ModelAndView loginError(){
+        return new ModelAndView("views/login/error/loginError.html");
     }
 
     @GetMapping("/registration")
