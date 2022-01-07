@@ -12,16 +12,17 @@ import shop.app.entity.User;
 import shop.app.services.UserService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RootController {
 
 
-
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public ModelAndView root() {
         return new ModelAndView("views/login/login.html");
     }
@@ -40,9 +41,7 @@ public class RootController {
     }
 
     @PostMapping("/registration")
-    public ModelAndView registrationPost(@Valid User user,
-                                         @Autowired BindingResult bindingResult) {
-
+    public ModelAndView registrationPost(@Valid User user) {
         user.setBlocked(false);
         userService.saveUser(user);
         return new ModelAndView("redirect:/");

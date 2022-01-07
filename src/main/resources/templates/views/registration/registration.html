@@ -309,10 +309,10 @@ input:focus:invalid {
             CookieShop
         </div>
 
-        <form th:action="@{/login}" class="avt" method="post">
-            <h1 class="logInText">Регистрация</h1>
-            <form th:action="@{/registration}" th:object="${user}" th:method="post">
+        <!--<form th:action="@{/registration}" class="avt" method="post">-->
 
+            <form th:action="@{/registration}" class="avt" th:object="${user}" th:method="post">
+                <h1 class="logInText">Регистрация</h1>
 
                 <input id="username"
                        name="username"
