@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" dir="ltr">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" dir="ltr">
+
 <head>
+
     <meta charset="utf-8">
     <style>
       @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+
+
  * {
      box-sizing: border-box;
  }
@@ -200,107 +204,8 @@
   margin-top: -48px;
 }
 
-
-
-
     </style>
     <title>CookieShop</title>
-    <script>
-
-const form  = document.getElementsByTagName('form')[0];
-const username = document.getElementById('username');
-const usernameError = document.querySelector('#username + span.error');
-
-username.addEventListener('input', function (event) {
-  if (username.validity.valid) {
-    usernameError.textContent = '';
-    usernameError.className = 'error';
-  } else {
-    showError();
-  }
-});
-
-form.addEventListener('submit', function (event) {
-  if(!username.validity.valid) {
-    showError();
-    event.preventDefault();
-  }
-});
-
-function showError() {
-  if(username.validity.valueMissing) {
-    usernameError.textContent = 'Длина';
-  } else if(username.validity.typeMismatch) {
-    usernameError.textContent = 'Тип';
-  } else if(username.validity.tooShort) {
-
-
-    usernameError.textContent = `Email should be at least ${ email.minLength } characters; you entered ${ email.value.length }.`;
-  }
-
-
-  usernameError.className = 'error active';
-}
-
-
-
-
-    </script>
-    <style>
-        body {
-  font: 1em sans-serif;
-  width: 200px;
-  padding: 0;
-  margin : 0 auto;
-}
-
-p * {
-  display: block;
-}
-
-input[type=text]{
-  -webkit-appearance: none;
-  appearance: none;
-
-  width: 100%;
-  border: 1px solid #333;
-  margin: 0;
-
-  font-family: inherit;
-  font-size: 90%;
-
-  box-sizing: border-box;
-}
-
-input:invalid{
-  border-color: #900;
-  background-color: #FDD;
-}
-
-input:focus:invalid {
-  outline: none;
-}
-
-
-.error {
-  width  : 100%;
-  padding: 0;
-
-  font-size: 80%;
-  color: white;
-  background-color: #900;
-  border-radius: 0 0 5px 5px;
-
-  box-sizing: border-box;
-}
-
-.error.active {
-  padding: 0.3em;
-}
-
-
-
-    </style>
 </head>
 <body>
 <div class="main">
@@ -309,105 +214,37 @@ input:focus:invalid {
             CookieShop
         </div>
 
-        <form th:action="@{/login}" class="avt" method="post">
-            <h1 class="logInText">Регистрация</h1>
-            <form th:action="@{/registration}" th:object="${user}" th:method="post">
+            <form th:action="@{/login}" class="avt" method="post">
+                <h1 class="logInText">Регистрация</h1>
+<form th:action="@{/registration}" th:object="${user}" th:method="post">
+                <input type="text" th:field="*{username}" id="username" name="username" placeholder="User name"/>
+                <input type="password" th:field="*{password}" id="pass1" name="password" placeholder="Password"/>
+                <input type="name" th:field="*{name}" name="name" value="" placeholder="Name">
+                <input type="surname" th:field="*{secondName}" name="surname" value="" placeholder="Surname">
+                <input type="number" th:field="*{phoneNumber}" name="number" value="" placeholder="Number">
+                <input type="mail" th:field="*{email}" name="mail" value="" placeholder="Mail">
 
 
-                <input id="username"
-                       name="username"
-                       required
-                       minlength="3"
-                       maxlength="18"
-                       type="text"
-                       th:field="*{username}"
-                       placeholder="Логин">
-                <span class="error" aria-live="polite"></span>
-                </br>
+                <button  id="button" type="submit" value="Вход">Регистрация</button>
+                  </form>
 
-                <input id="password"
-                       type="password"
-                       required
-                       minlength="3"
-                       maxlength="18"
-                       name="password"
-                       th:field="*{password}"
-                       placeholder="Пароль">
-                <span class="error" aria-live="polite"></span>
-                </br>
-                <input id="checkPassword"
-                       type="password"
-                       required
-                       minlength="3"
-                       maxlength="18"
-                       name="checkPassword"
-                       th:field="*{password}"
-                       placeholder="Подтвердите пароль">
-                <span class="error" aria-live="polite"></span>
-                </br>
-
-                <input id="name"
-                       name="name"
-                       type="text"
-                       required
-                       minlength="3"
-                       maxlength="18"
-                       th:field="*{name}"
-                       placeholder="Ваше имя">
-                <span class="error" aria-live="polite"></span>
-                </br>
-
-                <input id="secondName"
-                       name="surname"
-                       type="text"
-                       required
-                       minlength="3"
-                       maxlength="18"
-                       th:field="*{secondName}"
-                       placeholder="Ваша фамилия">
-                <span class="error" aria-live="polite"></span>
-                </br>
-
-                <input id="phoneNumber"
-                       name="number"
-                       type="number"
-                       required
-                       minlength="7"
-                       maxlength="17"
-                       th:field="*{phoneNumber}"
-                       placeholder="Номер телефона">
-                <span class="error" aria-live="polite"></span>
-                </br>
-
-                <input id="email"
-                       name="mail"
-                       type="text"
-                       th:field="*{email}"
-                       placeholder="Электронная почта">
-                </br>
-                <input type="submit" value="Регистрация">
             </form>
-            <a th:href="@{/}">Назад</a>
-            <button id="button" type="submit" value="Вход">Регистрация</button>
-        </form>
+        </div>
 
-        </form>
-    </div>
+        <div class="overlay-container">
+            <div class="overlay">
 
-    <div class="overlay-container">
-        <div class="overlay">
+                <div class="overlay-panel overlay-right">
 
-            <div class="overlay-panel overlay-right">
-
-                <h1>Привет, Друг!</h1>
-                <p>Если у тебя уже есть аккаунт, войди в него.</p>
-                <form th:action="@{/registration}">
-                    <button class="ghost" id="signUp">Вход</button>
-                </form>
+                    <h1>Привет, Друг!</h1>
+                    <p>Если у тебя уже есть аккаунт, войди в него.</p>
+                    <form th:action="@{/registration}">
+                        <button class="ghost" id="signUp">Вход</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 
 </html>

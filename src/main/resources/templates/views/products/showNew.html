@@ -1,23 +1,298 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
 
-<h1>Страница администратора</h1>
 
 
-<tr th:each="product : ${list}">
+    <title>CookieShop</title>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
 
-    <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getId +
-                                                                    ' ' + product.getName +
-                                                                    ' ' + product.getDate}"></a>
+
+        <title>Title</title>
+        <style>
+            @font-face {
+              font-family: fartune;
+              src: url(../fonts/fontMain.otf);
+            }
+
+            @font-face {
+              font-family: TwoFart;
+              src: url(../fonts/twoFont.ttf);
+            }
+            @font-face {
+              font-family: reza;
+              src: url(../fonts/Reza.ttf);
+            }
+
+            body {
+              height: 100% ;
+              width: 100%;
+              background-size: 100%;
+              }
+
+              * {
+                margin: 0;
+                padding: 0;
+              }
+
+              a {
+              text-decoration:none;
+            }
 
 
-</tr>
+    .mainDiv{
+      height: 100% ;
+      width: 100%;
+      background: #ff416c;
+      background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+    }
+
+    .inputBox {
+      width: 53%;
+      float:left;
+    }
+
+    .mainInput{
+      width: 100%;
+      height: 5vh;
+      margin-top: 5.2vh;
+      margin-left: 3.3vh;
+      border-radius: 1.3vh;
+      border-color: #C0C0C0;
+      outline: none;
+      font-size:3.8vh;
+      font-family: reza;
+      font-weight: bold;
+    }
+
+    .searchButton{
+      float: right;
+      background-color: #ff445c;
+      width: 100px;
+      height: 4.3vh;
+      margin-top: 5.5vh;
+      margin-right: 8vh;
+      border-radius: 1.2vh;
+      font-family: reza;
+      font-weight: bold;
+      letter-spacing: 0.2vh;
+      margin-right: -20vh;
+      margin-top: -5.2vh;
+    }
+
+
+    .line{
+      border-color:   #ff7f50;
+      width: 100%;
+      background-color: #ff7f50;
+
+    }
+    .line2{
+      border-color:   #ff7f50;
+      width: 100%;
+      background-color: #ff7f50;
+      margin-top: -1vh;
+    }
+
+    .headText{
+      font-size: 10.7vh;
+      padding-left: 5.7vh;
+    }
+
+    .nameShop{
+    text-align: left;
+    width: 33%;
+    font-family: fartune;
+    float: left;
+    }
+
+
+      ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(50,50,50,0.5);
+    }
+
+    .pageAdmin{
+      margin-left:7vh;
+      margin-top: 3vh;
+      font-family: reza;
+      font-weight: bold;
+      font-size: 2.5vh;
+      letter-spacing: -1px;
+      }
+
+      .globalList{
+        position: absolute;
+        display: block;
+        justify-content: center;
+        width: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        height: 55vh;
+      }
+      .unit{
+        margin-top: 1.3vh;
+        width: 100%;
+
+        height: 7vh;
+        display: flex;
+        align-items: center;
+      }
+      .nameUnit{
+        width: 15%;
+        font-family: reza;
+        margin-left: 8vh;
+        font-size: 22px;
+        color:#000;
+        font-weight: bold;
+        height: 99%;
+      }
+
+      .deleteUnitBox{
+        position: absolute;
+        right: 0;
+        margin-right: 5vh;
+
+      }
+      .deleteUnit{
+        color:#000;
+        font-family: TwoFart;
+        font-size: 2.6vh;
+      }
+      .deleteUserBox{
+        position: absolute;
+        right: 26vh;
+
+
+      }
+      .deleteUser{
+        color:#000;
+        font-family: TwoFart;
+        font-size: 2.6vh;
+
+      }
+
+
+
+
+
+
+
+            </style>
+
+
+    </head>
+
+
+    <body>
+
+      <div class="mainDiv">
+
+          <div class="Header">
+              <div class="nameShop">
+                  <h1 class="headText">CookieShop</h1>
+              </div>
+              <div class="inputBox">
+                  <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+                      <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
+                      <button type="button" name="button" class="searchButton">Поиск</button>
+                  </form>
+
+
+              </div>
+
+
+          </div>
+
+
+
+          <div class="lineOpt">
+              <hr class="line">
+          </div>
+
+      <div class="pageAdmin">
+        <h1 >Администратор</h1>
+      </div>
+
+    <div class="globalList">
+    <div class="globalUnits">
+
+
+      <div class="unit">
+
+            <div class="nameUnitBox">
+                <a href="#" class="nameUnit">Это название товара</a>
+            </div>
+
+            <div class="deleteUnitBox">
+              <form th:method="delete" th:href="@{/admin/product/delete/{id}(id=${product.getId})}">
+                  <a href="#" class="deleteUnit">Удалить товар</a>
+              </form>
+
+            </div>
+
+            <div class="deleteUserBox">
+
+              <form th:href="@{/admin/user/toBlock/{id}}" th:method="post">
+                <a href="#" class="deleteUser">Заблокировать пользователь</a>
+              </form>
+
+            </div>
+                          </div>
+                            <hr class="line2">
+                          </div>
+
+
+    </div>
+
+
+    <tr th:each="product : ${list}">
+
+        <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getId +
+                                                                        ' ' + product.getName +
+                                                                        ' ' + product.getDate}"></a>
+
+
+    </tr>
+
+
+    </body>
+
+
+
+    </html>
+
+<!-- НАдо узнать на совместной работе чтоэто такое -->
+<h1 th:text="${product.getName}"></h1>
+<p th:text="${product.getDescription}"></p>
+</br>
+<p th:text="${product.getDate}"></p>
+</br>
+<p th:text="${product.getPrice}"></p>
+<p th:text="${product.getCategory}"></p>
+
+
+
+
+
+
 
 
 </body>

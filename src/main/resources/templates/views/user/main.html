@@ -4,15 +4,19 @@
 <head>
     <title>CookieShop</title>
     <style>
-        @font-face {
-          font-family: fartune;
-          src: url(../fonts/fontMain.otf);
-        }
+    @font-face {
+      font-family: fartune;
+      src: url(../fonts/fontMain.otf);
+    }
 
-        @font-face {
-          font-family: TwoFart;
-          src: url(../fonts/twoFont.ttf);
-        }
+    @font-face {
+      font-family: TwoFart;
+      src: url(../fonts/twoFont.ttf);
+    }
+    @font-face {
+      font-family: reza;
+      src: url(../fonts/Reza.ttf);
+    }
 
         body {
           height: 100% ;
@@ -21,49 +25,69 @@
           }
 
 
-.mainDiv{
-  height: 100% ;
-  width: 100%;
-  background: #ff416c;
-  background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
-  position: fixed;
-  top: 0;
-  left: 0;
+          .mainDiv{
+            height: 100% ;
+            width: 100%;
+            background: #ff416c;
+            background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+            position: fixed;
+            top: 0;
+            left: 0;
 
-}
+          }
 
-.mainInput{
-  width: 100%;
-  height: 40px;
-  margin-top: 40px;
-  margin-left: 30px;
-  border-radius: 10px;
-  border-color: #C0C0C0;
-  outline: none;
-  font-size:30px;
+          .inputBox {
+            width: 53%;
+            float:left;
+          }
 
+          .mainInput{
+            width: 100%;
+            height: 5vh;
+            margin-top: 5.2vh;
+            margin-left: 3.3vh;
+            border-radius: 1.3vh;
+            border-color: #C0C0C0;
+            outline: none;
+            font-size:3.8vh;
+            font-family: reza;
+            font-weight: bold;
+          }
 
-}
-
-.inputBox {
-  width: 53%;
-  float:left;
-}
+          .searchButton{
+            float: right;
+            background-color: #ff445c;
+            width: 100px;
+            height: 4.3vh;
+            margin-top: 5.5vh;
+            margin-right: 8vh;
+            border-radius: 1.2vh;
+            font-family: reza;
+            font-weight: bold;
+            letter-spacing: 0.2vh;
+            margin-right: -20vh;
+            margin-top: -5.2vh;
+          }
 
 
 .line{
   border-color:   #ff7f50;
   width: 100%;
   background-color: #ff7f50;
-  margin-top: 30px;
+  
 }
 
 
-.searchBox{
-  padding-right: 60px;
-  float: right;
-  margin-top: 21px;
+.nameShop{
+text-align: left;
+width: 33%;
+font-family: fartune;
+float: left;
+}
 
+.headText{
+  font-size: 10.7vh;
+  padding-left: 5.7vh;
 }
 
 
@@ -80,30 +104,20 @@
 
 
 
-        .nameShop{
 
-        text-align: left;
-        height: 80px;
-        width: 33%;
-        font-family: fartune;
-        float: left;
-        }
-        .headText{
-          font-size: 83px;
-          padding-left: 45px;
-        }
+
         .userSide{
         display: inl
         border: 3px solid black;
-        border-radius: 15px;
+        border-radius: 2vh;
 
-        height: 530px;
+        height: 6vh;
         width: 100%;
         margin-left: 0px;
         }
         .username{
         font-family: TwoFart;
-        height: 120px;
+        height: 14vh;
         width: 33%;
         text-align: center;
         font-size: 25px;
@@ -111,19 +125,12 @@
         }
         .productListName{
         border: 1px solid black;
-        border-radius: 15px;
+        border-radius: 1.9vh;
         text-align: center;
-        height: 330px;
+        height: 40vh;
         width: 33%;
         }
-        .addProduct{
-        font-family: TwoFart;
-        text-align: center;
-        height: 70px ;
-        width: 33%;
-        font-size: 25px;
 
-        }
         .allProducts{
         overflow: scroll ;
         font-family: TwoFart;
@@ -131,11 +138,10 @@
         left: 34%;
         top: 14%;
         text-align: center;
-        font-size: 20px;
         height: 83%;
         width: 32%;
         overflow-x:hidden;
-        font-size: 28px;
+        font-size: 3vh;
 
         }
 
@@ -146,11 +152,11 @@
               top: 14%;
               position: absolute;
               text-align: center;
-              font-size: 20px;
+              font-size: 2.5vh;
               height: 83%;
               width: 66%;
               overflow-x:hidden;
-              font-size: 30px;
+
               }
         .userList{
           overflow: scroll ;
@@ -160,21 +166,14 @@
           font-size: 23px;
           text-align: center;
           overflow-x:hidden;
+          height: 55vh;
 
         }
         .product{
           text-align: center;
         }
 
-        .searchButton{
-          float: right;
-          background-color: #ff445c;
-          width: 100px;
-          height: 35px;
-          margin-top: 43px;
-          margin-right: 58px;
-          border-radius: 15px;
-        }
+
 
         .exit{
           border:none;
@@ -198,6 +197,9 @@
         }
 
         a.botr{
+          position: absolute;
+          bottom: 3%;
+          left: 9.5%;
           background:#fff;
           width:225px;
           display:block;
@@ -245,15 +247,14 @@
             <h1 class="headText">CookieShop</h1>
         </div>
         <div class="inputBox">
-            <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
-                <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
-
-            </form>
+          <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+              <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
+              <button type="button" name="button" class="searchButton">Поиск</button>
+          </form>
 
 
         </div>
-        <!-- Стилизацию кнопки потом переделаю, не красиво смотрить, а так все готово, осталось только расставить контрелеры -->
-        <button type="button" name="button" class="searchButton">Поиск</button>
+
     </div>
 
 

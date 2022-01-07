@@ -15,7 +15,7 @@
             }
             @font-face {
       font-family: reza;
-      src: url(../fonts/reza.ttf);
+      src: url(../fonts/Reza.ttf);
     }
 
     html {
@@ -46,41 +46,55 @@
 
        }
         .nameShop{
-            height: 80px;
-            width: 33%;
+           height: 8vh;
+           width: 33%;
            font-family: fartune;
-         float: left;
-              margin-top: -56px;
+           float: left;
+           margin-top: -7vh;
            }
 
-           .headText{
-         font-size: 83px;
-        padding-left: 45px;
+       .headText{
+           font-size: 10.7vh;
+           padding-left: 5.7vh;
        }
 
-          .mainInput{
-           width: 88.6%;
-          height: 38px;
-           margin-top: 40px;
-            margin-left: 30px;
-             border-radius: 10px;
-              border-color: #C0C0C0;
-              outline: none;
-             font-size:30px;
-              font-family: fartune;
+       .inputBox {
+         width: 53%;
+         float:left;
+       }
 
-            }
+       .mainInput{
+         width: 100%;
+         height: 5vh;
+         margin-top: 5.2vh;
+         margin-left: 3.3vh;
+         border-radius: 1.3vh;
+         border-color: #C0C0C0;
+         outline: none;
+         font-size:3.8vh;
+         font-family: reza;
+         font-weight: bold;
+       }
 
-        .inputBox {
-             width: 67%;
-              float: right;
-          }
-
+       .searchButton{
+         float: right;
+         background-color: #ff445c;
+         width: 100px;
+         height: 4.3vh;
+         margin-top: 5.5vh;
+         margin-right: 8vh;
+         border-radius: 1.2vh;
+         font-family: reza;
+         font-weight: bold;
+         letter-spacing: 0.2vh;
+         margin-right: -20vh;
+         margin-top: -5.2vh;
+       }
             .line{
              border-color:   #ff7f50;
             width: 100%;
              background-color: #ff7f50;
-           margin-top: 30px;
+           margin-top: 10.6vh;
           }
 
 
@@ -96,36 +110,39 @@
             }
 
 
-
             .globalProduct{
               width: 100%;
-              height: 400px;
+              height: 40vh;
               display: flex;
               justify-content: center;
-              text-align: center;
+
             }
             .center{
               width: 50%;
-
-
             }
 
+            .center2{
+              width: 100%;
+              height: 50vh;
+              word-wrap: break-word;
+              overflow: scroll;
+            }
 
 
           .h1 {
             font-family: reza;
-            font-size: 42px;
+            font-size: 5.3vh;
             letter-spacing: -2px;
             font-weight: bold;
-            word-wrap: break-word;
+
+            text-align: center;
           }
 
           .p {
             height: 50vh;
-            word-wrap: break-word;
             font-family: reza;
-            font-size: 19px;
-            overflow: auto;
+            font-size: 2.4vh;
+
 
           }
 
@@ -134,15 +151,15 @@
               bottom: 0;
               width: 100%;
               display: flex;
-              justify-content: center;
-              align-items: center;
+              overflow-x: hidden;
+              text-align: left;
 
           }
 
           .persChat{
             position: absolute;
             right: 25%;
-            bottom: 3%;
+            bottom: 0%;
           }
 
           .persName {
@@ -152,26 +169,57 @@
 
             text-align: left;
             font-family: reza;
-            font-size: 24px;
+            font-size: 2.8vh;
             font-weight: bold;
-            line-height: 10px;
+            line-height: 1vh;
           }
 
 
-
-          .butChat {
-            border: 1px solid #000;
-            background: #ff445c;
-            color: #000;
-            font-size: 17px;
-            font-weight: bold;
-            width: 180px;
-            height: 43px;
-            letter-spacing: 1px;
+           .opis{
+             font-family: reza;
 
            }
 
+           a.botrSearch {
+             width: 20;
+           }
 
+           a.botr{
+             background:#fff;
+
+             width:225px;
+             display:block;
+             height:33px;
+             padding-top:19px;
+             border:1px solid #000;
+             margin: 20px auto;
+             font-family: 'Dosis1', sans;
+             font-size: 18px;
+             font-weight:200;
+             color:#000;
+             text-transform:uppercase;
+             text-decoration:none;
+             text-align:center;
+             opacity:.8;
+             letter-spacing: 1px;
+             -webkit-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+             -moz-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+             -o-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+             transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+           }
+           a.botr:hover{
+             width:225px;
+             height:33px;
+             padding-top:19px;
+             border:1px solid teal;
+             margin: 20px auto;
+             opacity:1;
+             letter-spacing: 4px;
+             -webkit-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+             -moz-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+             -o-transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+             transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+   }
 
 
     </style>
@@ -183,7 +231,12 @@
         <h1 class="headText">CookieShop</h1>
     </div>
     <div class="inputBox">
-        <input type="text" value="" class="mainInput">
+        <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+            <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
+            <button type="button" name="button" class="searchButton">Поиск</button>
+        </form>
+
+
     </div>
 
     <div class="lineOpt">
@@ -194,26 +247,43 @@
 <div class="globalProduct">
     <div class="center">
 
-        <h1 class="h1" th:text="${product.getName}"></h1>
+        <h1 class="h1" th:text="${product.getName}">Описание продукта</h1>
         <div class="p">
-            <p th:text="${product.getDescription}"> Описание продукты</p>
-        </div>
+          <!--  не понимаю что это за контролер -->
+            <p class="opis" th:text="${product.getDescription}"> </p>
+
+        <div class="infoPers">
+            <div class="center2">
+              <p>
+
+вапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафывавапывапфавпфываываывфафывафывафыва
+
+
+
+
+              </p>
+              </div>
     </div>
 </div>
 
-<div class="infoPers">
-    <div class="center">
+
+
+
+
+
+
+      </p>
         <div class="persName">
             <p th:text="${user.getName + ' ' + user.getSecondName}">Имя Фамилия</p>
             <p th:text="${user.getPhoneNumber}">Номер телефона</p>
         </div>
 
         <div class="persChat">
-            <button th:href="@{/message/chat/{recipientId}(recipientId=${user.getId})}"
-                    type="button" name="button" class="butChat">Связаться</button>
+            <a th:href="@{/message/chat/{recipientId}(recipientId=${user.getId})}"
+                     class="botr">Связаться</a>
 
         </div>
-    </div>
+
 </div>
 
 
