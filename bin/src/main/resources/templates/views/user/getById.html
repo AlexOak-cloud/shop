@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+                #nameShop{
+        font-size: 15px;
+        text-align: center;
+        border: 3px solid black;
+        height: 80px;
+        width: 100%;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        }
+        #username{
+        border: 3px solid black;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        height: 70px;
+        width: 33%;
+        font-size: 40px;
+        text-align: center;
+        }
+       #phone{
+        border: 3px solid black;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        height: 70px;
+        width: 33%;
+        font-size: 25px;
+        text-align: center;
+        }
+        #message{
+         border: 3px solid black;
+        border-radius: 15px;
+        background-color: LightSalmon;
+        height:  70px;
+        width: 33%;
+        font-size: 25px;
+        text-align: center;
+        }
+          #userProducts{
+           overflow: scroll ;
+        border: 3px solid black;
+        position: absolute;
+        left: 34%;
+        top: 15%;
+        background-color: LightSalmon;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 20px;
+        height: 83%;
+        width: 32%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="nameShop">
+    <h1>CookieShop</h1>
+</div>
+<div id="page">
+    <h1 id="username" th:text="${user.getName + ' ' + user.getSecondName}">Name SecondName</h1>
+    <p id="phone" th:text="${'PhoneNumber: ' + user.getPhoneNumber}">PhoneNumber: 123112312</p>
+    <a id="message" th:href="@{/message/chat/{id}(id=${user.getId})}">Написать сообщение</a>
+
+    <div id="userProducts">
+        <h3>Остальные товары этого продавца</h3>
+        <tr th:each="product : ${allProductsByUser}">
+            <a th:text="${product.getName}" th:href="@{/product/getById/{id}(id=${product.getId})}">Product</a>
+            </br>
+        </tr>
+    </div>
+</div>
+</body>
+</html>

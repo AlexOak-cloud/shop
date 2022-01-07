@@ -14,7 +14,6 @@ import shop.app.services.UserService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
     UserService userService;
 
@@ -45,7 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Перенарпавление на главную страницу после успешного входа
                 .defaultSuccessUrl("/user/main")
                 .permitAll()
-                .failureUrl("/loginError")
                 .and()
                 .logout()
                 .permitAll()

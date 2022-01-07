@@ -1,0 +1,1 @@
+                              netstat -ona | findstr :8080 | findstr LISTENING

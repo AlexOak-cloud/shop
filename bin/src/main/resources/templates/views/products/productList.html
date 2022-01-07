@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+        <style>
+        @font-face {
+        font-family: fartune;
+        src: url(../fonts/fontMain.otf);
+            }
+
+        @font-face {
+        font-family: TwoFart;
+        src: url(../fonts/twoFont.ttf);
+            }
+            @font-face {
+      font-family: reza;
+      src: url(../fonts/reza.ttf);
+    }
+
+    html {
+
+    min-height: 100%;
+    margin: 0;
+}
+
+      body {
+        margin: 0;
+        min-height: 100% ;
+        width: 100%;
+        background-size: 100%;
+        background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+        overflow:auto;
+        overflow-x: hidden;
+            }
+
+
+          .mainDiv{
+         height: 100% ;
+            width: 100%;
+             background: #ff416c;
+          background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+
+              top: 0;
+            left: 0;
+
+       }
+        .nameShop{
+            height: 80px;
+            width: 33%;
+           font-family: fartune;
+         float: left;
+              margin-top: -56px;
+           }
+
+           .headText{
+         font-size: 83px;
+        padding-left: 45px;
+       }
+
+          .mainInput{
+           width: 88.6%;
+          height: 38px;
+           margin-top: 40px;
+            margin-left: 30px;
+             border-radius: 10px;
+              border-color: #C0C0C0;
+              outline: none;
+             font-size:30px;
+              font-family: fartune;
+
+            }
+
+        .inputBox {
+             width: 67%;
+              float: right;
+          }
+
+            .line{
+             border-color:   #ff7f50;
+            width: 100%;
+             background-color: #ff7f50;
+           margin-top: 30px;
+          }
+
+
+             ::-webkit-scrollbar {
+               width: 5px;
+          }
+
+
+              ::-webkit-scrollbar-thumb {
+                -webkit-border-radius: 10px;
+               border-radius: 10px;
+            background: #000;
+            }
+
+
+
+            .globalProduct{
+              width: 100%;
+              height: 400px;
+              display: flex;
+              justify-content: center;
+              text-align: center;
+            }
+            .center{
+              width: 50%;
+
+
+            }
+
+
+
+          .hName {
+            font-family: reza;
+            font-size: 42px;
+            letter-spacing: -2px;
+            font-weight: bold;
+            word-wrap: break-word;
+            text-align: left;
+          }
+
+          .pText {
+            height: 50vh;
+            word-wrap: break-word;
+            font-family: reza;
+            font-size: 19px;
+            overflow: auto;
+            text-align: left;
+            line-height: 5px;
+          }
+          .nameProd{
+            font-size: 21px;
+            font-weight: bold;
+          }
+
+          .optProd{
+            font-size: 19px;
+          }
+
+
+          .infoPers{
+              width: 100%;
+              bottom: 0;
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+          }
+
+          .persChat{
+            position: absolute;
+            right: 25%;
+            bottom: 3%;
+          }
+
+          .persName {
+            position: absolute;
+            left: 25%;
+            bottom: 0;
+
+            text-align: left;
+            font-family: reza;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 10px;
+          }
+
+
+
+          .butChat {
+            border: 1px solid #000;
+            background: #ff445c;
+            color: #000;
+            font-size: 17px;
+            font-weight: bold;
+            width: 180px;
+            height: 43px;
+            letter-spacing: 1px;
+
+           }
+
+           .prod{
+             margin-top: 45px;
+           }
+
+           </style>
+
+
+    <title>Title</title>
+
+</head>
+
+<body>
+
+<div class="mainDiv">
+
+
+    <div class="nameShop">
+        <h1 class="headText">CookieShop</h1>
+
+    </div>
+
+    <div class="inputBox">
+
+        <input type="text" value="" class="mainInput">
+    </div>
+
+    <div class="lineOpt">
+        <hr class="line">
+    </div>
+</div>
+
+<div class="globalProduct">
+  <div class="center">
+
+
+
+
+
+<tr th:each="product : ${list}">
+    <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName +
+ ' ' + product.getPrice + ' ' + product.getUser}"></a>
+    </br>
+   <p class="hName"> Результат поиска </p>
+   <div class="pText">
+
+     <div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+<div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div><div class="prod">
+
+
+<p class="nameProd">Название продукта</p>
+<p class="optProd">Это описание продукта</p>
+</div>
+ </div>
+
+  </div>
+  </div>
+
+    <div class="infoPers">
+        <div class="center">
+          <div class="persName">
+              <p>Имя Фамилия</p>
+              <p>Номер телефона</p>
+          </div>
+
+    <div class="persChat">
+              <a type="button" name="button" class="butChat">Связаться</a>
+
+    </div>
+      </div>
+    </div>
+
+
+
+
+</div>
+
+</tr>
+
+</body>
+
+</html>

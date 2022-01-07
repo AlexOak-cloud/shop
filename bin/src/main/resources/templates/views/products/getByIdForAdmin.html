@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CookieShop</title>
+</head>
+<body>
+
+<h1>Страница изменения товаров</h1>
+
+<h1 th:text="${product.getName}"></h1>
+<p th:text="${product.getDescription}"></p>
+</br>
+<p th:text="${product.getDate}"></p>
+</br>
+<p th:text="${product.getPrice}"></p>
+<p th:text="${product.getCategory}"></p>
+
+<form th:href="@{/admin/user/toBlock/{id}}" th:method="post">
+    <input type="submit" value="Заблокировать пользователя">
+</form>
+
+<form th:method="delete" th:href="@{/admin/product/delete/{id}(id=${product.getId})}">
+    <input type="submit" value="Удалить товар">
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+
+        @font-face {
+          font-family: fartune;
+          src: url(../fonts/fontMain.otf);
+        }
+
+        @font-face {
+          font-family: TwoFart;
+          src: url(../fonts/twoFont.ttf);
+        }
+        @font-face {
+          font-family: reza;
+          src: url(../fonts/Reza.ttf);
+        }
+
+        body {
+          height: 100% ;
+          width: 100%;
+          background-size: 100%;
+          }
+
+
+        .mainDiv{
+          height: 100% ;
+          width: 100%;
+          background: #ff416c;
+          background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+          position: fixed;
+          top: 0;
+          left: 0;
+
+        }
+        .nameShop{
+          height: 80px;
+          width: 33%;
+          font-family: fartune;
+          float: left;
+          margin-top: -56px;
+        }
+
+        .headText{
+          font-size: 83px;
+          padding-left: 45px;
+          font-family: fartune;
+        }
+
+        .mainInput{
+          width: 88.6%;
+          height: 38px;
+          margin-top: 40px;
+          margin-left: 30px;
+          border-radius: 10px;
+          border-color: #C0C0C0;
+          outline: none;
+          font-size:30px;
+
+
+        }
+
+        .inputBox {
+          width: 67%;
+          float: right;
+        }
+
+        .line{
+          border-color:   #ff7f50;
+          width: 100%;
+          background-color: #ff7f50;
+          margin-top: 30px;
+        }
+
+        .lineOpt{
+          margin-top: 110px;
+        }
+          ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+
+          ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: rgba(50,50,50,0.5);
+        }
+
+        .globalProduct{
+          width: 100%;
+          height: 100%;
+
+        }
+
+        .add{
+          width: 100%;
+          position: fixed;
+          display: block;
+          justify-content: center;
+          align-items:center;
+
+        }
+
+        .hiText{
+          width: 100%;
+          margin-top:40px;
+          font-size: 50px;
+          font-family: reza;
+          display: flex;
+          justify-content: center;
+
+        }
+
+
+        .textAdd{
+
+        }
+        .form{
+          justify-content: center;
+          display: flex;
+
+        }
+         .input1 {
+            background: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+            font-family: reza;
+            font-size: 18px;
+        }
+        #button{
+          width: 108%;
+        }
+        .label1{
+          font-family: reza;
+          font-size: 17px;
+
+        }
+
+        .choice{
+          font-family: reza;
+          font-size: 25px;
+        }
+
+
+
+
+    </style>
+    <title>CookieShop</title>
+</head>
+<body>
+  <div class="mainDiv">
+
+
+  <div class="nameShop">
+      <h1 class="headText">CookieShop</h1>
+
+  </div>
+
+
+
+  <div class="lineOpt">
+  <hr class="line">
+  </div>
+</div>
+
+<div class="globalProduct">
+
+</div>
+<div class="add">
+
+
+
+<div class="hiText">
+<h3 class="textAdd" >Добавьте товар</h3>
+</div>
+<div class="form">
+
+
+<form  method="post" th:object="${product}" th:action="@{/product/create}">
+      <label class="label1" for="name">Название</label>
+      <input id="name" class="input1" th:field="*{name}" type="text" placeholder="name">
+    </br>
+      <label class="label1" for="description">Описание</label>
+      <input id="description" class="input1" th:field="*{description}" type="text" placeholder="description">
+    </br>
+      <label class="label1" for="price">Стоимость</label>
+      <input id="price" class="input1" th:field="*{price}" type="text" placeholder="price">
+    </br>
+
+    <p>Выберит категорию :</p>
+
+
+    <div class="choice">
+
+      <input type="radio" id="DRESS" th:field="*{category}" name="DRESS" value="DRESS">
+      <label for="DRESS">Одежда</label><br>
+      <input type="radio" id="CARS" th:field="*{category}" name="CARS" value="CARS">
+      <label for="CARS">Автомобили</label><br>
+      <input type="radio" id="TECHNOLOGIES" th:field="*{category}" name="TECHNOLOGIES" value="TECHNOLOGIES">
+      <label for="TECHNOLOGIES">Технологии</label></br>
+
+    </div>
+
+    </br>
+    <input class="input1" id="button" type="submit" value="Добавить">
+    </div>
+    </div>
+</form>
+</body>
+</html>
