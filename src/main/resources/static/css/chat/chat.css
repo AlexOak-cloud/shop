@@ -1,0 +1,177 @@
+   @font-face {
+          font-family: fartune;
+          src: url(../fonts/fontMain.otf);
+        }
+
+        @font-face {
+          font-family: TwoFart;
+          src: url(../fonts/twoFont.ttf);
+        }
+        @font-face {
+          font-family: reza;
+          src: url(../fonts/Reza.ttf);
+        }
+
+        body {
+          height: 100% ;
+          width: 100%;
+          background-size: 100%;
+          }
+
+          * {
+            margin: 0;
+            padding: 0;
+          }
+
+          a {
+          text-decoration:none;
+        }
+
+        .mainDiv{
+          height: 100% ;
+          width: 100%;
+          background: #ff416c;
+          background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+          position: fixed;
+          top: 0;
+          left: 0;
+
+        }
+
+        .nameShop{
+        width: 33%;
+        font-family: fartune;
+        float: left;
+        }
+
+        .headText{
+          font-size: 10.7vh;
+          padding-left: 5.7vh;
+        }
+
+        .inputBox {
+          width: 53%;
+          float:left;
+        }
+
+        .mainInput{
+          width: 100%;
+          height: 5vh;
+          margin-top: 5.2vh;
+          margin-left: 3.3vh;
+          border-radius: 1.3vh;
+          border-color: #C0C0C0;
+          outline: none;
+          font-size:3.8vh;
+          font-family: reza;
+          font-weight: bold;
+        }
+
+        .searchButton{
+          float: right;
+          background-color: #ff445c;
+          width: 100px;
+          height: 4.3vh;
+          margin-top: 5.5vh;
+          margin-right: 8vh;
+          border-radius: 1.2vh;
+          font-family: reza;
+          font-weight: bold;
+          letter-spacing: 0.2vh;
+          margin-right: -20vh;
+          margin-top: -5.2vh;
+        }
+
+        .line{
+          border-color:   #ff7f50;
+          width: 100%;
+          background-color: #ff7f50;
+          margin-top: 10.6vh;
+        }
+
+/* Header */
+
+  ::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(50,50,50,0.5);
+}
+
+/* Skrool */
+
+
+.globalChat{
+  width: 100%;
+  height: 80vh;
+  display: block;
+  justify-content: center;
+
+}
+
+
+.globalMasseng{
+  width: 38%;
+  height: 67vh;
+  text-align: right;
+  overflow: scroll;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column-reverse;
+
+}
+
+
+
+.chatBox{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.text{
+  margin-top: 2vh;
+  font-size: 5.8vh;
+  font-family: reza;
+  font-weight:bold;
+  text-align: center;
+}
+
+.mainDownBox{
+  display: flex;
+  justify-content: center;
+
+}
+
+.inputMass{
+  width: 50vh;
+  height: 5vh;
+  font-family: reza;
+  font-size: 3vh;
+}
+
+.butMass{
+  background-color: #ff445c;
+  width: 100px;
+  height: 4.3vh;
+  border-radius: 1.2vh;
+  font-family: reza;
+  font-weight: bold;
+  letter-spacing: 0.2vh;
+
+
+}
+
+.mass{
+  font-size: 3vh;
+  font-family: reza;
+  font-weight: bold;
+}
+
+.boxMass{
+  margin: 0.5vh;
+}

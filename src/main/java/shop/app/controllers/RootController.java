@@ -3,6 +3,7 @@ package shop.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,23 +18,11 @@ import java.util.List;
 @Controller
 public class RootController {
 
-<<<<<<< HEAD
 
     @Autowired
     private UserService userService;
-
-    @GetMapping("/login")
-=======
-    @Autowired
-    private UserService userService;
-
-    @GetMapping("/login?error")
-    public ModelAndView errorLogin(){
-        return new ModelAndView("/login/errors/loginError.html");
-    }
 
     @GetMapping("/")
->>>>>>> d8d74fc04126cc4fabded9fee26af73cfaf87151
     public ModelAndView root() {
         return new ModelAndView("views/login/login.html");
     }
@@ -46,7 +35,11 @@ public class RootController {
     }
 
     @PostMapping("/registration")
-    public ModelAndView registrationPost(@Valid User user) {
+    public ModelAndView registrationPost(@Valid User user,
+                                         @Autowired BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return new ModelAndView("/views/registration/registration.html");
+        }
         user.setBlocked(false);
         userService.saveUser(user);
         return new ModelAndView("redirect:/");
