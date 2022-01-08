@@ -23,69 +23,85 @@
 </div>
 <div class="globalProduct">
   <div class="center">
+      <p class="hName"> Результат поиска </p>
+      <div class="pText">
+      <div class="prod">
 <tr th:each="product : ${list}">
-    <a th:href="@{/product/getById/{id}(id=${product.getId})}" th:text="${product.getName +
- ' ' + product.getPrice + ' ' + product.getUser}"></a>
+    <a  class="nameProd" th:href="@{/product/getById/{id}(id=${product.getId})}"
+       th:text="${product.getName}"></a>
+    <p>Стоимость: </p>
+    <a th:href="@{/product/getById/{id}(id=${product.getId})}"
+                           th:text="${product.getPrice}"></a>
+    <p>Продавец: </p>
+    <a th:href="@{/user/getById/{id}(id=${product.getUser})}"
+       th:text="${product.getUser.getName}"></a>
+
+<!--    ' ' + product.getPrice + ' ' + product.getUser}"></a>-->
+    </br>
+    </br>
+    </br>
     </br>
 </tr>
-   <p class="hName"> Результат поиска </p>
-   <div class="pText">
+      </div>
+      </div>
 
-     <div class="prod">
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
-<div class="prod">
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
+<!--   <div class="pText">-->
 
-<div class="prod">
+<!--     <div class="prod">-->
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
+<!--<div class="prod">-->
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
 
-
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
-
-<div class="prod">
+<!--<div class="prod">-->
 
 
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
 
-<div class="prod">
-
-
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
-
-<div class="prod">
+<!--<div class="prod">-->
 
 
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
 
-<div class="prod">
-
-
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
-<div class="prod">
+<!--<div class="prod">-->
 
 
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div><div class="prod">
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
+
+<!--<div class="prod">-->
 
 
-<p class="nameProd">Название продукта</p>
-<p class="optProd">Это описание продукта</p>
-</div>
- </div>
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
+
+<!--<div class="prod">-->
+
+
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
+<!--<div class="prod">-->
+
+
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div><div class="prod">-->
+
+
+<!--<p class="nameProd">Название продукта</p>-->
+<!--<p class="optProd">Это описание продукта</p>-->
+<!--</div>-->
+<!-- </div>-->
 
   </div>
   </div>

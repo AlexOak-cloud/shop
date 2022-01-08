@@ -16,7 +16,7 @@
         <div class="inputBox">
           <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
               <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
-              <button type="button" name="button" class="searchButton">Поиск</button>
+              <button type="submit" name="button" class="searchButton">Поиск</button>
           </form>
         </div>
     </div>

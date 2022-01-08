@@ -131,6 +131,7 @@
 
           .pText {
             height: 50vh;
+            width: 300vh;
             word-wrap: break-word;
             font-family: reza;
             font-size: 2vh;

@@ -35,11 +35,7 @@ public class RootController {
     }
 
     @PostMapping("/registration")
-    public ModelAndView registrationPost(@Valid User user,
-                                         @Autowired BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            return new ModelAndView("/views/registration/registration.html");
-        }
+    public ModelAndView registrationPost(@Valid User user) {
         user.setBlocked(false);
         userService.saveUser(user);
         return new ModelAndView("redirect:/");

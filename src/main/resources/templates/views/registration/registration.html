@@ -63,15 +63,12 @@
                    name="number"
                    type="number"
                    th:field="*{phoneNumber}"
-                   required
-                   minlength="7"
-                   maxlength="17"
-                   placeholder="Номер телефона">
+                   placeholder="Номер телефона (не обязательно)">
             <span class="error"></span>
 
             <input id="mail"
                    name="mail"
-                   type="text"
+                   type="email"
                    th:field="*{email}"
                    required
                    minlength="7"

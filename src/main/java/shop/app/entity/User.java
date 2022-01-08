@@ -52,8 +52,6 @@ public class User implements UserDetails {
     @Size(min = 3, max = 10, message = "Длинна поля должна быть от 3 до 10 элементов")
     private String secondName;
     @Column(name = "phone_number")
-    @NotNull(message = "Поле не может быть пустым")
-    @Size(min = 7, max = 12, message = "Длинна поля должна быть от 7 до 12 элементов")
     private String phoneNumber;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
