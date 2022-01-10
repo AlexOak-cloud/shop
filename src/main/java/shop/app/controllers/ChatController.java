@@ -23,19 +23,19 @@ public class ChatController {
     @GetMapping("/chat/{recipientId}")
     public ModelAndView chatGet(@PathVariable("recipientId") int id,
                                 @ModelAttribute("message") Message message) {
-        User sender  = userService.getById(id);
+        User recipient  = userService.getById(id);
         ModelAndView mav = new ModelAndView("/views/message/chat.html");
         mav.addObject("message ", new Message());
-        mav.addObject("recipientUser", sender);
+        mav.addObject("recipientUser", recipient);
         mav.addObject("chatList",messageService.formatChat(
-                messageService.getChat(sender,userService.getAuthUser())));
+                messageService.getChat(recipient,userService.getAuthUser())));
         return mav;
     }
 
     @PostMapping("/chat/{recipientId}")
     public ModelAndView chatPost(@PathVariable("recipientId") int id,
                                  Message message) {
-        ModelAndView mav = new ModelAndView("redirect:/chat/{recipientId}");
+        ModelAndView mav = new ModelAndView("redirect:/message/chat/{recipientId}");
         mav.addObject("recipientUser",userService.getById(id));
         message.setDate(LocalDateTime.now());
         message.setSenderUser(userService.getAuthUser());

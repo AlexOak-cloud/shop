@@ -33,7 +33,7 @@
     <a th:href="@{/product/getById/{id}(id=${product.getId})}"
                            th:text="${product.getPrice}"></a>
     <p>Продавец: </p>
-    <a th:href="@{/user/getById/{id}(id=${product.getUser})}"
+    <a th:href="@{/user/getById/{id}(id=${product.getUser.getId})}"
        th:text="${product.getUser.getName}"></a>
 
 <!--    ' ' + product.getPrice + ' ' + product.getUser}"></a>-->
