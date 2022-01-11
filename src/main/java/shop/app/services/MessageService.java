@@ -34,7 +34,6 @@ public class MessageService implements SqlQuery {
     private DataSource dataSource;
 
 
-
     public void save(Message message) {
         messageRepository.save(message);
     }
@@ -68,11 +67,12 @@ public class MessageService implements SqlQuery {
 
     public List<String> formatChat(List<Message> list) {
         List<String> rtnList = new ArrayList<>();
+        char mark = 8;
         for (Message tmp : list) {
             if (tmp.getSenderUser().getId() == userService.getAuthUser().getId()) {
-                rtnList.add("Вы: \n" + tmp.getContent() + "\n" + tmp.getDate());
+                rtnList.add(mark + "Вы: \n" + tmp.getContent() + "\n" + tmp.getDate());
             } else {
-                rtnList.add(tmp.getSenderUser().getName() + ": \n" + tmp.getContent()+ "\n" + tmp.getDate());
+                rtnList.add(mark + tmp.getSenderUser().getName() + ": \n" + tmp.getContent() + "\n" + tmp.getDate());
             }
         }
         return rtnList;

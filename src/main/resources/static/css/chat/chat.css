@@ -120,6 +120,7 @@
   overflow: scroll;
   overflow-x: hidden;
   word-wrap: break-word;
+  text-align: left;
   display: flex;
   flex-direction: column-reverse;
 
@@ -174,4 +175,8 @@
 
 .boxMass{
   margin: 0.5vh;
+  text-align: left;
+}
+.content{
+text-align: left;
 }

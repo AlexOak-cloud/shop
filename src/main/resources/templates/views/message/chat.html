@@ -30,6 +30,8 @@
             <div class="globalMasseng">
                 <div class="boxMass">
                     <tr th:each="message : ${chatList}">
+                    <p id="content" th:text="${message}">message</p>
+                    </tr>
                 </div>
             </div>
         </div>
