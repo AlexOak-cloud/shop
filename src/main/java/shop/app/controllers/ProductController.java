@@ -59,6 +59,7 @@ public class ProductController {
     @GetMapping("/search/dress")
     public ModelAndView searchDress(){
         ModelAndView mav = new ModelAndView("/views/products/getList.html");
+        mav.addObject("product",new Product());
         mav.addObject("list",productService.getAllByCategory(ProductCategories.DRESS));
         return mav;
     }
@@ -66,6 +67,7 @@ public class ProductController {
     @GetMapping("/search/technology")
     public ModelAndView searchTechnology(){
         ModelAndView mav = new ModelAndView("/views/products/getList.html");
+        mav.addObject("product",new Product());
         mav.addObject("list",productService.getAllByCategory(ProductCategories.TECHNOLOGIES));
         return mav;
     }
@@ -73,6 +75,7 @@ public class ProductController {
     @GetMapping("/search/cars")
     public ModelAndView searchCars(){
         ModelAndView mav = new ModelAndView("/views/products/getList.html");
+        mav.addObject("product",new Product());
         mav.addObject("list",productService.getAllByCategory(ProductCategories.CARS));
         return mav;
     }

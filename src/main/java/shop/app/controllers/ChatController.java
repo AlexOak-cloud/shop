@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import shop.app.entity.Message;
 import shop.app.entity.User;
-import shop.app.services.MessageService;
 import shop.app.services.UserService;
 import java.time.LocalDateTime;
 
@@ -42,6 +40,14 @@ public class ChatController {
         message.setRecipientUser(userService.getById(id));
         message.setRead(false);
         messageService.save(message);
+        return mav;
+    }
+
+    @GetMapping("/chats")
+    public ModelAndView getChats(){
+        ModelAndView mav = new ModelAndView("/views/message/chat.html");
+
+
         return mav;
     }
 }

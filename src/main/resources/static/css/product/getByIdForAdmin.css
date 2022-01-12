@@ -46,12 +46,13 @@ body {
     width: 33%;
     font-family: fartune;
     float: left;
-    margin-top: -7vh;
+
 }
 
 .headText {
     font-size: 10.7vh;
     padding-left: 5.9vh;
+    color: black;
 }
 
 .inputBox {
@@ -216,8 +217,3 @@ a {
     text-decoration: none;
     color: #000;
 }
-
-
-<
-/
-style >

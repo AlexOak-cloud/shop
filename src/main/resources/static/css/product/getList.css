@@ -100,10 +100,11 @@ body {
 .headText {
     font-size: 83px;
     padding-left: 45px;
+    color: black;
 }
 
 .userSide {
-    display: inl
+    display: inline;
     border: 3px solid black;
     border-radius: 15px;
 
@@ -121,6 +122,21 @@ body {
     margin-top: 35px;
 
 
+}
+
+.searchButton {
+    float: right;
+    background-color: #ff445c;
+    width: 100px;
+    height: 4.3vh;
+    margin-top: 5.5vh;
+    margin-right: 8vh;
+    border-radius: 1.2vh;
+    font-family: reza;
+    font-weight: bold;
+    letter-spacing: 0.2vh;
+    margin-right: -20vh;
+    margin-top: -5.2vh;
 }
 
 .productListName {
@@ -248,7 +264,3 @@ a.botr:hover {
 
     overflow: auto;
 }
-
-<
-/
-style >

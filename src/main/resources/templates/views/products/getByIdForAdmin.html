@@ -9,7 +9,7 @@
 <body>
 <div class="mainDiv">
     <div class="nameShop">
-        <h1 class="headText">CookieShop</h1>
+        <a class="headText" th:href="@{/user/main}">CookieShop</a>
     </div>
     <div class="inputBox">
         <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">

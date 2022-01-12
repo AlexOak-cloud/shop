@@ -14,7 +14,7 @@
 
     <div class="Header">
         <div class="nameShop">
-            <h1 class="headText">CookieShop</h1>
+            <a th:href="@{/user/main}" class="headText">CookieShop</a>
         </div>
         <div class="inputBox">
             <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">

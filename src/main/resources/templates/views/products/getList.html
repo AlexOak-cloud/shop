@@ -5,38 +5,36 @@
     <title>CookieShop</title>
 
     <link rel="stylesheet" type="text/css" media="all"
-          href="../../../static/css/product/getList.css" th:href="@{/css/product/getList.css}" />
+          href="../../../static/css/product/getList.css" th:href="@{/css/product/getList.css}"/>
 
 </head>
 <body>
 <div class="mainDiv">
-<div class="header">
-  <div class="nameShop">
-      <h1 class="headText">CookieShop</h1>
-  </div>
-  <div class="inputBox">
-      <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
-    <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
-      </form>
-  </div>
-  <div class="searchBox">
-        <button type="button" name="button"  class="butSearch">Поиск</button>
+    <div class="header">
+        <div class="nameShop">
+            <a th:href="@{/user/main}" class="headText">CookieShop</a>
         </div>
+        <div class="inputBox">
+            <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+                <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск">
+                <button type="submit" name="button" class="searchButton">Поиск</button>
+            </form>
         </div>
-  <div class="lineOpt">
-  <hr class="line">
-  </div>
-<div class="inform">
-  <div class="listInfo">
-          <tr th:each="product : ${list}">
-  </div>
-  <div class="itemInfo">
-    <a th:href="@{/product/getById/{id}(id = ${product.getId})}" th:text="${product.getName + ' ' +
+    </div>
+    <div class="lineOpt">
+        <hr class="line">
+    </div>
+    <div class="inform">
+        <div class="listInfo">
+            <tr th:each="product : ${list}">
+                <div class="itemInfo">
+                    <a th:href="@{/product/getById/{id}(id = ${product.getId})}" th:text="${product.getName + ' ' +
     product.getPrice}"></a>
-    </br>
-          </tr>
-  </div>
-</div>
+                    </br>
+                </div>
+            </tr>
+        </div>
+    </div>
 </div>
 </body>
 </html>

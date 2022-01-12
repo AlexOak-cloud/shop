@@ -14,10 +14,10 @@
             <h1 class="headText">CookieShop</h1>
         </div>
         <div class="inputBox">
-          <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
-              <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
-              <button type="submit" name="button" class="searchButton">Поиск</button>
-          </form>
+            <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+                <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
+                <button type="submit" name="button" class="searchButton">Поиск</button>
+            </form>
         </div>
     </div>
     <div class="lineOpt">
@@ -28,7 +28,7 @@
             <h1 th:text="${user.getName + ' ' + user.getSecondName}">User Name</h1>
             <h3 th:text="${'Phone Number: ' + user.getPhoneNumber}">телефон: 123123123</h3>
             <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Выход" class="exit">
+                <button type="submit" name="button" class="exitButton">Выход</button>
             </form>
         </div>
         <div class="userList">
@@ -39,9 +39,26 @@
             </tr>
         </div>
         <div class="addProduct">
-            <a class="botr" th:href="@{/product/create}">Добавить</a>
+            <a class="message" th:href="@{/message/chats}">Сообщения</a>
+            <a class="botr" th:href="@{/product/create}">Добавить товар</a>
         </div>
+
+
         <div class="news">
+            <p class="findByCategory">+ Поиск по категориям +</p>
+            <a class="findByCar" th:href="@{/product/search/cars}">Автомобили</a>
+            </br>
+            <a class="findByDress" th:href="@{/product/search/cars}">Одежде</a>
+            </br>
+            <a  class="findByTechnology" th:href="@{/product/search/cars}">Технологии</a>
+            </br>
+            <p class="newProducts">+ Новые товары +</p>
+            <tr th:each="product : ${allProduct}">
+                <a class="product"
+                   th:text="${product.getName + '     стоимость:  ' + product.getPrice}"
+                   th:href="@{/product/getById/{id}(id=${product.getId})}"></a>
+                </br>
+            </tr>
         </div>
     </div>
 </div>
