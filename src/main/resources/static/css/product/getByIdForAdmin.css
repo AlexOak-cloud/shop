@@ -1,222 +1,223 @@
-   <style>
-        @font-face {
-        font-family: fartune;
-        src: url(../fonts/fontMain.otf);
-            }
+@font-face {
+    font-family: fartune;
+    src: url(../fonts/fontMain.otf);
+}
 
-        @font-face {
-        font-family: TwoFart;
-        src: url(../fonts/twoFont.ttf);
-            }
-            @font-face {
-      font-family: reza;
-      src: url(../fonts/Reza.ttf);
-    }
+@font-face {
+    font-family: TwoFart;
+    src: url(../fonts/twoFont.ttf);
+}
 
-    html {
+@font-face {
+    font-family: reza;
+    src: url(../fonts/Reza.ttf);
+}
+
+html {
 
     min-height: 100%;
     margin: 0;
 }
 
-      body {
-        margin: 0;
-        min-height: 100% ;
-        width: 100%;
-        background-size: 100%;
-        background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
-        overflow:auto;
-        overflow-x: hidden;
-            }
+body {
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+    background-size: 100%;
+    background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+    overflow: auto;
+    overflow-x: hidden;
+}
 
 
-          .mainDiv{
-             height: 100% ;
-             width: 100%;
-             background: #ff416c;
-             background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
+.mainDiv {
+    height: 100%;
+    width: 100%;
+    background: #ff416c;
+    background: linear-gradient(to right, #ff4b2b, #ff7f50) no-repeat 0 0 / cover;
 
-              top: 0;
-              left: 0;
+    top: 0;
+    left: 0;
 
-       }
-        .nameShop{
-              height: 17vh;
-              width: 33%;
-              font-family: fartune;
-              float: left;
-              margin-top: -7vh;
-           }
+}
 
-           .headText{
-              font-size: 10.7vh;
-              padding-left: 5.9vh;
-       }
+.nameShop {
+    height: 17vh;
+    width: 33%;
+    font-family: fartune;
+    float: left;
+    margin-top: -7vh;
+}
 
-       .inputBox {
-         width: 53%;
-         float:left;
-       }
+.headText {
+    font-size: 10.7vh;
+    padding-left: 5.9vh;
+}
 
-       .mainInput{
-         width: 100%;
-         height: 5vh;
-         margin-top: 5.2vh;
-         margin-left: 3.3vh;
-         border-radius: 1.3vh;
-         border-color: #C0C0C0;
-         outline: none;
-         font-size:3.8vh;
-         font-family: reza;
-         font-weight: bold;
-       }
+.inputBox {
+    width: 53%;
+    float: left;
+}
 
-          .searchButton{
-            float: right;
-            background-color: #ff445c;
-            width: 100px;
-            height: 4.3vh;
-            margin-top: 5.5vh;
-            margin-right: 8vh;
-            border-radius: 1.2vh;
-            font-family: reza;
-            font-weight: bold;
-            letter-spacing: 0.2vh;
-            margin-right: -20vh;
-            margin-top: -5.2vh;
-          }
+.mainInput {
+    width: 100%;
+    height: 5vh;
+    margin-top: 5.2vh;
+    margin-left: 3.3vh;
+    border-radius: 1.3vh;
+    border-color: #C0C0C0;
+    outline: none;
+    font-size: 3.8vh;
+    font-family: reza;
+    font-weight: bold;
+}
 
-            .line{
-             border-color:   #ff7f50;
-             width: 100%;
-             background-color: #ff7f50;
+.searchButton {
+    float: right;
+    background-color: #ff445c;
+    width: 100px;
+    height: 4.3vh;
+    margin-top: 5.5vh;
+    margin-right: 8vh;
+    border-radius: 1.2vh;
+    font-family: reza;
+    font-weight: bold;
+    letter-spacing: 0.2vh;
+    margin-right: -20vh;
+    margin-top: -5.2vh;
+}
 
-          }
+.line {
+    border-color: #ff7f50;
+    width: 100%;
+    background-color: #ff7f50;
 
-
-
-
-             ::-webkit-scrollbar {
-               width: 5px;
-          }
+}
 
 
-              ::-webkit-scrollbar-thumb {
-                -webkit-border-radius: 10px;
-                border-radius: 10px;
-                background: #000;
-            }
+::-webkit-scrollbar {
+    width: 5px;
+}
 
 
-            .line2{
-              border-color:   #ff7f50;
-              width: 50%;
-              background-color: #ff7f50;
-              margin-top: -5vh;
-            }
-
-            .globalProduct{
-              width: 100%;
-              height: 40vh;
-              display: flex;
-              justify-content: center;
-
-            }
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #000;
+}
 
 
+.line2 {
+    border-color: #ff7f50;
+    width: 50%;
+    background-color: #ff7f50;
+    margin-top: -5vh;
+}
 
-            .center{
-              width: 100%;
+.globalProduct {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
 
-            }
-
-            .leftBox{
-              display: flex;
-              align-items: center;
-              justify-content:center;
-
-              margin-top:10vh;
-              height: 50vh;
-              width: 50%;
-              float: left;
-            }
-
-            .rightBox{
-              margin-top: 10vh;
-              width: 50%;
-              float: right;
-              height: 50vh;
-              word-wrap: break-word;
-              overflow: scroll;
-            }
+}
 
 
+.center {
+    width: 100%;
+
+}
+
+.leftBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10vh;
+    height: 50vh;
+    width: 50%;
+    float: left;
+}
+
+.rightBox {
+    margin-top: 10vh;
+    width: 50%;
+    float: right;
+    height: 50vh;
+    word-wrap: break-word;
+    overflow: scroll;
+}
 
 
-          .h1 {
-            font-family: reza;
-            font-size: 5.5vh;
-            letter-spacing: -2px;
-            font-weight: bold;
-            text-align: center;
-          }
+.h1 {
+    font-family: reza;
+    font-size: 5.5vh;
+    letter-spacing: -2px;
+    font-weight: bold;
+    text-align: center;
+}
 
-          .p {
-            height: 50vh;
-            font-family: reza;
-            font-size: 2.3vh;
-
-
-          }
-
-          .infoPers{
-              width: 100%;
-              bottom: 0;
-              width: 100%;
-              display: flex;
-              overflow-x: hidden;
-              text-align: left;
-
-          }
-
-           .opis{
-             font-family: reza;
-
-           }
-
-           .nameUnit{
-             font-weight: bold;
-             font-size: 5vh;
-           }
-           .butBox{
-            display: flex;
-           }
-           .deletUnit{
-             width: 50%;
-             position: absolute;
-             bottom: 5vh;
-             right:0;
-             text-align: center;
-             font-size: 3vh;
-             font-family: reza;
-             font-weight: bold;
-
-           }
-           .deletUser{
-             width: 50%;
-             position: absolute;
-             bottom: 5vh;
-             left:0;
-             text-align: center;
-             font-size: 3vh;
-             font-family: reza;
-             font-weight: bold;
-           }
-
-           a{
-             text-decoration: none;
-             color:#000;
-           }
+.p {
+    height: 50vh;
+    font-family: reza;
+    font-size: 2.3vh;
 
 
-    </style>
+}
+
+.infoPers {
+    width: 100%;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    overflow-x: hidden;
+    text-align: left;
+
+}
+
+.opis {
+    font-family: reza;
+
+}
+
+.nameUnit {
+    font-weight: bold;
+    font-size: 5vh;
+}
+
+.butBox {
+    display: flex;
+}
+
+.deletUnit {
+    width: 50%;
+    position: absolute;
+    bottom: 5vh;
+    right: 0;
+    text-align: center;
+    font-size: 3vh;
+    font-family: reza;
+    font-weight: bold;
+
+}
+
+.deletUser {
+    width: 50%;
+    position: absolute;
+    bottom: 5vh;
+    left: 0;
+    text-align: center;
+    font-size: 3vh;
+    font-family: reza;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+<
+/
+style >

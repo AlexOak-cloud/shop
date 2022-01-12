@@ -5,13 +5,12 @@
 
     <link rel="stylesheet" type="text/css" media="all"
           href="../../../static/css/product/getById.css" th:href="@{/css/product/getById.css}"/>
-    </style>
     <title>Title</title>
 </head>
 <body>
 <div class="mainDiv">
     <div class="nameShop">
-        <h1 class="headText">CookieShop</h1>
+        <a th:href="@{/user/main}" class="headText">CookieShop</a>
     </div>
     <div class="inputBox">
         <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
@@ -50,12 +49,6 @@
         </div>
 
     </div>
-
-
 </div>
-
-</tr>
-
 </body>
-
 </html>

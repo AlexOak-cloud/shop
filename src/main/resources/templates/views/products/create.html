@@ -10,7 +10,7 @@
 <body>
 <div class="mainDiv">
     <div class="nameShop">
-        <h1 class="headText">CookieShop</h1>
+        <a th:href="@{/user/main}" class="headText">CookieShop</a>
     </div>
     <div class="lineOpt">
         <hr class="line">
@@ -25,13 +25,35 @@
     <div class="form">
         <form method="post" th:object="${product}" th:action="@{/product/create}">
             <label class="label1" for="name">Название</label>
-            <input id="name" class="input1" th:field="*{name}" type="text" placeholder="name">
+            <input id="name"
+                   class="input1"
+                   required
+                   minlength="2"
+                   maxlength="50"
+                   th:field="*{name}"
+                   type="text"
+                   placeholder="name">
+            <span class="error"></span>
             </br>
             <label class="label1" for="description">Описание</label>
-            <input id="description" class="input1" th:field="*{description}" type="text" placeholder="description">
+            <input id="description"
+                   class="input1"
+                   maxlength="500"
+                   th:field="*{description}"
+                   type="text"
+                   placeholder="description">
+            <span class="error"></span>
             </br>
             <label class="label1" for="price">Стоимость</label>
-            <input id="price" class="input1" th:field="*{price}" type="text" placeholder="price">
+            <input id="price"
+                   class="input1"
+                   required
+                   minlength="1"
+                   maxlength="12"
+                   th:field="*{price}"
+                   type="number"
+                   placeholder="price">
+            <span class="error"></span>
             </br>
             <p>Выберит категорию :</p>
             <div class="choice">

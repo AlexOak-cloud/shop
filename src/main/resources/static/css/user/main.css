@@ -74,6 +74,7 @@ body {
 .headText{
         font-size: 10.7vh;
         padding-left: 5.7vh;
+
 }
 ::-webkit-scrollbar {
         width: 5px;
@@ -91,9 +92,9 @@ body {
         width: 100%;
         margin-left: 0px;
 }
-username{
+.username{
         font-family: TwoFart;
-        height: 14vh;
+        height: 16vh;
         width: 33%;
         text-align: center;
         font-size: 25px;
