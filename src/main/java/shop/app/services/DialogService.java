@@ -9,8 +9,6 @@ import shop.app.repository.DialogRepository;
 public class DialogService {
 
     @Autowired
-    private DialogRepository dialogRepository;
-
-
+  private DialogRepository dialogRepository;
 
 }

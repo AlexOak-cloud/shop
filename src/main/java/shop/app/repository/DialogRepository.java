@@ -13,6 +13,7 @@ import shop.app.services.UserService;
 
 import javax.sql.DataSource;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -24,20 +25,13 @@ public class DialogRepository {
     @Autowired
     private UserService userService;
 
-    @Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:jdbc/schema.sql")
-                .addScript("classpath:jdbc/test-data.sql").build();
-    }
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void createChat(User recipientUser) {
+    public void createChat(User sender, User recipient) {
         jdbcTemplate.execute(
-                "CREATE TABLE dialog_" + userService.getAuthUser() + "_" + recipientUser.getId() +
+                "CREATE TABLE dialog_" + sender.getId() + "_" + recipient.getId() +
                         "(id INT AUTO_INCREMENT PRIMARY KEY," +
                         "recipientUser INT," +
                         "message VARCHAR(1000) NOT NULL," +
@@ -50,19 +44,18 @@ public class DialogRepository {
                         "ENGINE=innodb");
     }
 
-    public void saveMessage(String message, User recipientUser, LocalDateTime date,boolean isRead){
-        jdbcTemplate.execute("insert into " +
-                "dialog_"+userService.getAuthUser() + "_" + recipientUser.getId() +
-                "(recipientUser,message,date_msg,isRead) values " +
-                "(" + recipientUser.getId() +"," + message +"," + date + "," + isRead + ")");
+    public void saveMessage(String message, User recipientUser, LocalDateTime date, boolean isRead) {
+        jdbcTemplate.update("insert into " +
+                "dialog_" + userService.getAuthUser() + "_" + recipientUser.getId() +
+                "(recipientUse?,message,date_msg,isRead) values " +
+                "(?,?,?,?)", recipientUser.getId(), message, date, isRead);
     }
 
-    public List<Dialog> getAll(){
-        !!!!!
+    public List<Dialog> getAll(User sender, User recepient) {
+       jdbcTemplate.
 
 
+        return Collections.emptyList();
     }
-
-
 
 }
