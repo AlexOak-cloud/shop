@@ -32,11 +32,10 @@ public class MessageService implements SqlQuery {
     private UserService userService;
 
     private static DateTimeFormatter dateTimeFormatter =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
-
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public boolean save(Message message) {
-        if (message.equals(null)) {
+        if (message == null) {
             return false;
         }
         message.setDateTime(LocalDateTime.now());
@@ -54,7 +53,6 @@ public class MessageService implements SqlQuery {
     }
 
     public void deleteMessage(Message message) {
-
         messageRepository.delete(message);
     }
 
@@ -62,12 +60,18 @@ public class MessageService implements SqlQuery {
         messageRepository.deleteById(id);
     }
 
-    public List<Message> getChat(User recepient) {
+    public List<Message> getChat(int recipientId) {
         List<Message> rtnList = new ArrayList<>();
+        int authUserId = userService.getAuthUser().getId();
         try (Statement statement = dataSource.getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery(
                     String.format(
-                            getChatByRecipient, userService.getAuthUser().getId(), recepient.getId()));
+                            getChatByRecipient,
+                            authUserId,
+                            recipientId,
+                            recipientId,
+                            authUserId
+                            ));
             while (resultSet.next()) {
                 Message message = new Message();
                 message.setId(resultSet.getInt(1));
@@ -76,10 +80,8 @@ public class MessageService implements SqlQuery {
                 message.setSenderId(resultSet.getInt(4));
                 message.setRecipientId(resultSet.getInt(5));
                 message.setDateTime(
-                        LocalDateTime.parse(
-                                resultSet.getString(6),
-                                dateTimeFormatter
-                        ));
+                        LocalDateTime.parse(String.valueOf(resultSet.getString(6)),
+                                dateTimeFormatter));
                 rtnList.add(message);
             }
             return rtnList;
@@ -92,5 +94,26 @@ public class MessageService implements SqlQuery {
     public List<Message> sortedListByDate(List<Message> list) {
         list.sort(Comparator.comparing(Message::getDateTime));
         return list;
+    }
+
+    public List<String> formatList(List<Message> list) {
+        StringBuilder sb = new StringBuilder();
+        List<String> rtnList = new ArrayList<>();
+        for (Message tmp : list) {
+            if (tmp.getSenderId() == userService.getAuthUser().getId()) {
+                rtnList.add(sb.
+                        append("Вы: ").
+                        append("\n").
+                        append(tmp.getContent()).
+                        append("\n").toString());
+            } else {
+                rtnList.add(sb.
+                        append(userService.getById(tmp.getRecipientId()).getName()).
+                        append("\n").
+                        append(tmp.getContent()).
+                        append("\n").toString());
+            }
+        }
+        return rtnList;
     }
 }

@@ -9,8 +9,6 @@ import shop.app.entity.User;
 import shop.app.services.MessageService;
 import shop.app.services.UserService;
 
-import java.time.LocalDateTime;
-
 @Controller
 @RequestMapping("/message")
 public class MessageController {
@@ -28,7 +26,8 @@ public class MessageController {
         ModelAndView mav = new ModelAndView("/views/message/chat.html");
         mav.addObject("message ", new Message());
         mav.addObject("recipientUser", recipient);
-//        mav.addObject("chatList",
+        mav.addObject("messageList",messageService.formatList(
+                messageService.sortedListByDate(messageService.getChat(id))));
         return mav;
     }
 
@@ -38,6 +37,7 @@ public class MessageController {
         ModelAndView mav = new ModelAndView("redirect:/message/chat/{recipientId}");
         mav.addObject("recipientUser", userService.getById(id));
         message.setRead(false);
+        message.setRecipientId(id);
         messageService.save(message);
         return mav;
     }

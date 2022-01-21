@@ -29,7 +29,7 @@
         <div class="chatBox">
             <div class="globalMasseng">
                 <div class="boxMass">
-                    <tr th:each="message : ${chatList}">
+                    <tr th:each="message : ${messageList}">
                     <p id="content" th:text="${message}">message</p>
                     </tr>
                 </div>
