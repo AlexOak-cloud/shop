@@ -48,15 +48,15 @@
             <p class="findByCategory">+ Поиск по категориям +</p>
             <a class="findByCar" th:href="@{/product/search/cars}">Автомобили</a>
             </br>
-            <a class="findByDress" th:href="@{/product/search/cars}">Одежде</a>
+            <a class="findByDress" th:href="@{/product/search/dress}">Одежде</a>
             </br>
-            <a  class="findByTechnology" th:href="@{/product/search/cars}">Технологии</a>
+            <a  class="findByTechnology" th:href="@{/product/search/technology}">Технологии</a>
             </br>
             <p class="newProducts">+ Новые товары +</p>
             <tr th:each="product : ${allProduct}">
                 <a class="product"
                    th:text="${product.getName + '     стоимость:  ' + product.getPrice}"
-                   th:href="@{/product/getById/{id}(id=${product.getId})}"></a>
+                   th:href="@{/product/getById/{id}(id=${product.getId})}">exemple</a>
                 </br>
             </tr>
         </div>

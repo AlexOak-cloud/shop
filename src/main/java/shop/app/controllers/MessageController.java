@@ -26,8 +26,10 @@ public class MessageController {
         ModelAndView mav = new ModelAndView("/views/message/chat.html");
         mav.addObject("message ", new Message());
         mav.addObject("recipientUser", recipient);
-        mav.addObject("messageList",messageService.formatList(
-                messageService.sortedListByDate(messageService.getChat(id))));
+        mav.addObject("messageList",
+                messageService.formatList(
+                messageService.sortedListByDate(
+                        messageService.getChat(id))));
         return mav;
     }
 

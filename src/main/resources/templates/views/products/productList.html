@@ -4,129 +4,45 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" media="all"
-          href="../../../static/css/product/productList.css" th:href="@{/css/product/productList.css}" />
+          href="../../../static/css/product/productList.css" th:href="@{/css/product/productList.css}"/>
 </head>
 <body>
 <div class="mainDiv">
     <div class="nameShop">
-        <h1 class="headText">CookieShop</h1>
+        <a th:href="@{/user/main}" class="headText">CookieShop</a>
     </div>
     <div class="inputBox">
-      <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
-          <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
-          <button type="button" name="button" class="searchButton">Поиск</button>
-      </form>
+        <form th:action="@{/product/search/byName}" th:object="${product}" th:method="post">
+            <input type="text" class="mainInput" th:field="*{name}" placeholder="Поиск...">
+            <button type="button" name="button" class="searchButton">Поиск</button>
+        </form>
     </div>
     <div class="lineOpt">
         <hr class="line">
     </div>
 </div>
 <div class="globalProduct">
-  <div class="center">
-      <p class="hName"> Результат поиска </p>
-      <div class="pText">
-      <div class="prod">
-<tr th:each="product : ${list}">
-    <a  class="nameProd" th:href="@{/product/getById/{id}(id=${product.getId})}"
-       th:text="${product.getName}"></a>
-    <p>Стоимость: </p>
-    <a th:href="@{/product/getById/{id}(id=${product.getId})}"
-                           th:text="${product.getPrice}"></a>
-    <p>Продавец: </p>
-    <a th:href="@{/user/getById/{id}(id=${product.getUser.getId})}"
-       th:text="${product.getUser.getName}"></a>
-
-<!--    ' ' + product.getPrice + ' ' + product.getUser}"></a>-->
-    </br>
-    </br>
-    </br>
-    </br>
-</tr>
-      </div>
-      </div>
-
-<!--   <div class="pText">-->
-
-<!--     <div class="prod">-->
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-<!--<div class="prod">-->
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-
-<!--<div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-
-<!--<div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-
-<!--<div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-
-<!--<div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-
-<!--<div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-<!--<div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div><div class="prod">-->
-
-
-<!--<p class="nameProd">Название продукта</p>-->
-<!--<p class="optProd">Это описание продукта</p>-->
-<!--</div>-->
-<!-- </div>-->
-
-  </div>
-  </div>
-
-    <div class="infoPers">
-        <div class="center">
-          <div class="persName">
-              <p>Имя Фамилия</p>
-              <p>Номер телефона</p>
-          </div>
-
-    <div class="persChat">
-              <a type="button" name="button" class="botr">Связаться</a>
-
+    <div class="center">
+        <p class="hName"> Результат поиска </p>
+        <div class="pText">
+            <div class="prod">
+                <tr th:each="product : ${list}">
+                    <a class="nameProd" th:href="@{/product/getById/{id}(id=${product.getId})}"
+                       th:text="${product.getName}"></a>
+                    <p>Стоимость: </p>
+                    <a th:href="@{/product/getById/{id}(id=${product.getId})}"
+                       th:text="${product.getPrice}"></a>
+                    <p>Продавец: </p>
+                    <a th:href="@{/user/getById/{id}(id=${product.getUser.getId})}"
+                       th:text="${product.getUser.getName}"></a>
+                    </br>
+                    </br>
+                    </br>
+                    </br>
+                </tr>
+            </div>
+        </div>
     </div>
-      </div>
-    </div>
-
-
-
-
 </div>
-
-</tr>
-
 </body>
-
 </html>

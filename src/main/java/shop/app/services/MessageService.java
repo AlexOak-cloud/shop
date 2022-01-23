@@ -71,7 +71,7 @@ public class MessageService implements SqlQuery {
                             recipientId,
                             recipientId,
                             authUserId
-                            ));
+                    ));
             while (resultSet.next()) {
                 Message message = new Message();
                 message.setId(resultSet.getInt(1));
@@ -97,21 +97,14 @@ public class MessageService implements SqlQuery {
     }
 
     public List<String> formatList(List<Message> list) {
-        StringBuilder sb = new StringBuilder();
         List<String> rtnList = new ArrayList<>();
+        String exemple = null;
         for (Message tmp : list) {
-            if (tmp.getSenderId() == userService.getAuthUser().getId()) {
-                rtnList.add(sb.
-                        append("Вы: ").
-                        append("\n").
-                        append(tmp.getContent()).
-                        append("\n").toString());
+            if(tmp.getSenderId() == userService.getAuthUser().getId()){
+                rtnList.add("Вы:\n" + tmp.getContent() + "\n");
             } else {
-                rtnList.add(sb.
-                        append(userService.getById(tmp.getRecipientId()).getName()).
-                        append("\n").
-                        append(tmp.getContent()).
-                        append("\n").toString());
+                rtnList.add(userService.getById(tmp.getRecipientId()).getName() + ":\n" +
+                        tmp.getContent() + "\n");
             }
         }
         return rtnList;
