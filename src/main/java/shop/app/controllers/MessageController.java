@@ -28,8 +28,8 @@ public class MessageController {
         mav.addObject("recipientUser", recipient);
         mav.addObject("messageList",
                 messageService.formatList(
-                messageService.sortedListByDate(
-                        messageService.getChat(id))));
+                        messageService.sortedListByDate(
+                                messageService.getChat(id)), userService.getById(id)));
         return mav;
     }
 

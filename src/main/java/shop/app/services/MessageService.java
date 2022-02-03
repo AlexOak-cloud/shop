@@ -96,14 +96,13 @@ public class MessageService implements SqlQuery {
         return list;
     }
 
-    public List<String> formatList(List<Message> list) {
+    public List<String> formatList(List<Message> list, User user) {
         List<String> rtnList = new ArrayList<>();
-        String exemple = null;
         for (Message tmp : list) {
             if(tmp.getSenderId() == userService.getAuthUser().getId()){
                 rtnList.add("Вы:\n" + tmp.getContent() + "\n");
             } else {
-                rtnList.add(userService.getById(tmp.getRecipientId()).getName() + ":\n" +
+                rtnList.add( user.getName() + ":\n" +
                         tmp.getContent() + "\n");
             }
         }

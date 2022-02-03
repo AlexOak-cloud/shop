@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import shop.app.entity.Message;
 
 @Repository
-@EnableJpaRepositories
 public interface MessageRepository extends JpaRepository<Message,Integer> {
 
 }
